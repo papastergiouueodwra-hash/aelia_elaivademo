@@ -152,19 +152,19 @@ en:{
 towelsRequest:{eyebrow:'GUEST REQUEST',title:'Extra towels',quantityLabel:'How many extra towels?',placeholder:'Anything else we should know?',button:'Send request',success:'Your request has been sent.',successText:'The host team can now see your request.'},
 cleaningRequest:{eyebrow:'GUEST REQUEST',title:'Request cleaning',placeholder:'Preferred day or any details?',button:'Send request',success:'Cleaning request sent.',successText:'The host team can now see your request.'},
 issue:{eyebrow:'GUEST REQUEST',title:'Report an issue',placeholder:'Please describe the issue...',button:'Report issue',success:'Issue reported.',successText:'The host team can now see your report.'},
-question:{eyebrow:'GUEST REQUEST',title:'Ask the host',placeholder:'Write your question...',button:'Send message',success:'Message sent.',successText:'The host team can now see your message.'}
+question:{eyebrow:'GUEST REQUEST',title:'Contact the host',placeholder:'Write your question...',button:'Send message',success:'Message sent.',successText:'The host team can now see your message.',call:'Call host',callbackLabel:'Or leave your phone number and the host can call you back',phonePlaceholder:'Your phone number'}
 },
 el:{
 towelsRequest:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Επιπλέον πετσέτες',quantityLabel:'Πόσες επιπλέον πετσέτες χρειάζεστε;',placeholder:'Κάτι ακόμη που πρέπει να γνωρίζουμε;',button:'Αποστολή αιτήματος',success:'Το αίτημα στάλθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει το αίτημά σας.'},
 cleaningRequest:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Αίτημα καθαρισμού',placeholder:'Προτιμώμενη ημέρα ή κάποια λεπτομέρεια;',button:'Αποστολή αιτήματος',success:'Το αίτημα καθαρισμού στάλθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει το αίτημά σας.'},
 issue:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Αναφορά προβλήματος',placeholder:'Περιγράψτε το πρόβλημα...',button:'Αναφορά προβλήματος',success:'Το πρόβλημα αναφέρθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει την αναφορά σας.'},
-question:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Επικοινωνία με οικοδεσπότη',placeholder:'Γράψτε την ερώτησή σας...',button:'Αποστολή μηνύματος',success:'Το μήνυμα στάλθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει το μήνυμά σας.'}
+question:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Επικοινωνία με οικοδεσπότη',placeholder:'Γράψτε την ερώτησή σας...',button:'Αποστολή μηνύματος',success:'Το μήνυμα στάλθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει το μήνυμά σας.',call:'Καλέστε τον οικοδεσπότη',callbackLabel:'Ή αφήστε το τηλέφωνό σας για να σας καλέσει ο οικοδεσπότης',phonePlaceholder:'Το τηλέφωνό σας'}
 },
 de:{
 towelsRequest:{eyebrow:'GÄSTEANFRAGE',title:'Zusätzliche Handtücher',quantityLabel:'Wie viele zusätzliche Handtücher benötigen Sie?',placeholder:'Gibt es noch etwas?',button:'Anfrage senden',success:'Ihre Anfrage wurde gesendet.',successText:'Das Unterkunftsteam kann Ihre Anfrage jetzt sehen.'},
 cleaningRequest:{eyebrow:'GÄSTEANFRAGE',title:'Reinigung anfragen',placeholder:'Bevorzugter Tag oder weitere Details?',button:'Anfrage senden',success:'Reinigungsanfrage gesendet.',successText:'Das Unterkunftsteam kann Ihre Anfrage jetzt sehen.'},
 issue:{eyebrow:'GÄSTEANFRAGE',title:'Problem melden',placeholder:'Bitte beschreiben Sie das Problem...',button:'Problem melden',success:'Problem gemeldet.',successText:'Das Unterkunftsteam kann Ihre Meldung jetzt sehen.'},
-question:{eyebrow:'GÄSTEANFRAGE',title:'Gastgeber fragen',placeholder:'Schreiben Sie Ihre Frage...',button:'Nachricht senden',success:'Nachricht gesendet.',successText:'Das Unterkunftsteam kann Ihre Nachricht jetzt sehen.'}
+question:{eyebrow:'GÄSTEANFRAGE',title:'Gastgeber kontaktieren',placeholder:'Schreiben Sie Ihre Frage...',button:'Nachricht senden',success:'Nachricht gesendet.',successText:'Das Unterkunftsteam kann Ihre Nachricht jetzt sehen.',call:'Gastgeber anrufen',callbackLabel:'Oder hinterlassen Sie Ihre Telefonnummer für einen Rückruf',phonePlaceholder:'Ihre Telefonnummer'}
 }};
 let activeRequestKey=null;
 function openGuestRequest(key){
@@ -181,10 +181,14 @@ function openGuestRequest(key){
   const quantityField=key==='towelsRequest'
     ? '<label class="request-quantity-label" for="guestRequestQuantity">'+d.quantityLabel+'</label><select id="guestRequestQuantity" required><option value="">—</option>'+[1,2,3,4,5,6,7,8,9,10].map(n=>'<option value="'+n+'">'+n+'</option>').join('')+'</select>'
     : '';
+  const contactField=key==='question'
+    ? '<a class="host-call-button" href="tel:+306900000000">'+d.call+' · +30 690 000 0000</a><div class="host-callback-block"><label for="guestRequestPhone">'+d.callbackLabel+'</label><input id="guestRequestPhone" type="tel" placeholder="'+d.phonePlaceholder+'"></div>'
+    : '';
   document.getElementById('modalText').innerHTML=
     '<form class="guest-request-form" onsubmit="submitGuestRequest(event)">'+
     '<input id="guestRequestBooking" required type="text" placeholder="'+(lang==='el'?'Αριθμός κράτησης':lang==='de'?'Buchungsnummer':'Booking number')+'">'+
     quantityField+
+    contactField+
     '<textarea id="guestRequestMessage" placeholder="'+d.placeholder+'"></textarea>'+
     '<button type="submit">'+d.button+' <span>→</span></button>'+
     '</form>';
@@ -198,9 +202,11 @@ function submitGuestRequest(e){
   const message=document.getElementById('guestRequestMessage').value.trim();
   const quantityEl=document.getElementById('guestRequestQuantity');
   const quantity=quantityEl?Number(quantityEl.value):null;
+  const phoneEl=document.getElementById('guestRequestPhone');
+  const callbackPhone=phoneEl?phoneEl.value.trim():'';
   const property=selectedProperty?.name||'Aelia Suites';
   const requests=JSON.parse(localStorage.getItem('aeliaGuestRequests')||'[]');
-  const request={type:activeRequestKey,property,bookingNumber,message,quantity,createdAt:new Date().toISOString(),status:'new'};
+  const request={type:activeRequestKey,property,bookingNumber,message,quantity,callbackPhone,createdAt:new Date().toISOString(),status:'new'};
   requests.push(request);
   localStorage.setItem('aeliaGuestRequests',JSON.stringify(requests));
   window.dispatchEvent(new CustomEvent('aeliaGuestRequest',{detail:request}));
