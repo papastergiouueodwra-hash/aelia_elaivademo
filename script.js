@@ -5,43 +5,54 @@ document.addEventListener('DOMContentLoaded',()=>{
     beaches:{
       eyebrow:'01 / OUTDOORS',
       title:'Beaches & sunsets',
-      text:'A few favourite places for a relaxed day by the sea. From quiet coves for swimming to beautiful sunset viewpoints, these are the spots we would suggest to our guests.',
-      extra:'• Blue Cove — 8 min by car\n• Agios Nikolaos Beach — 12 min by car\n• Sunset Point — 15 min by car\n\nTip: Sunset Point is especially beautiful around golden hour.'
+      text:'A few favourite places for a relaxed day by the sea. From quiet coves for swimming to beautiful sunset viewpoints, these are the spots we would suggest to our guests.'
     },
     food:{
       eyebrow:'02 / LOCAL FLAVOURS',
       title:'Eat & drink',
-      text:'A selection of local restaurants, cafés and relaxed spots for breakfast, lunch, dinner or a late drink.',
-      extra:'• The Olive Table — Greek cuisine\n• Mare Blu — seafood by the water\n• Kipos Café — breakfast & coffee\n• Bar 27 — cocktails & evening drinks\n\nAsk the Assistant for a recommendation based on what you are in the mood for.'
+      text:'A selection of local restaurants, cafés and relaxed spots for breakfast, lunch, dinner or a late drink.'
     },
     parking:{
       eyebrow:'PARKING',
       title:'Private parking',
-      text:'Private parking is available beside the property and is reserved for guests during their stay.',
-      extra:'Access is available from the main driveway. Please keep the entrance clear for other guests.'
+      text:'Private parking is available beside the property and is reserved for guests during their stay. Access is available from the main driveway, and the entrance should remain clear for other guests.'
     },
     transport:{
       eyebrow:'GETTING AROUND',
       title:'Getting around',
-      text:'The easiest way to explore the area is by car, but taxis and local transfers are also available.',
-      extra:'• Taxi: available on request\n• Airport transfer: can be arranged in advance\n• Car rental: recommended for exploring nearby beaches and villages\n\nAsk the Assistant for help with directions or a transfer.'
+      text:'The easiest way to explore the area is by car, but taxis and local transfers are also available. Airport transfers can be arranged in advance, and our Assistant can help with directions.'
     },
     pharmacy:{
       eyebrow:'PHARMACY & ESSENTIALS',
       title:'Pharmacy & essentials',
-      text:'The nearest pharmacy is approximately 4 minutes away by car. A small convenience shop is also available nearby for everyday essentials.',
-      extra:'• Pharmacy — 4 min by car\n• Mini market — 3 min by car\n• Bakery — 5 min by car\n\nFor urgent medical assistance, call 112.'
+      text:'The nearest pharmacy is approximately 4 minutes away by car, while a small convenience shop and bakery are available nearby for everyday essentials.'
     },
     emergency:{
       eyebrow:'EMERGENCY INFORMATION',
       title:'Emergency contacts',
-      text:'For any serious emergency, call 112. Our team is also available to help you contact the appropriate local service.',
-      extra:'• Emergency services: 112\n• Police: 100\n• Ambulance: 166\n• Fire service: 199\n\nFor non-urgent questions, contact your host.'
+      text:'For any serious emergency, call 112. For non-urgent questions, please contact your host, who can help you reach the appropriate local service.'
     }
+  };
+  const demoDetailsEl={
+    beaches:{eyebrow:'01 / ΕΞΩΤΕΡΙΚΟΙ ΧΩΡΟΙ',title:'Παραλίες & ηλιοβασιλέματα',text:'Μερικά από τα αγαπημένα μας σημεία για μια χαλαρή μέρα δίπλα στη θάλασσα. Από ήσυχους κολπίσκους για κολύμπι μέχρι όμορφα σημεία για το ηλιοβασίλεμα, αυτά είναι τα μέρη που θα προτείναμε στους επισκέπτες μας.'},
+    food:{eyebrow:'02 / ΤΟΠΙΚΕΣ ΓΕΥΣΕΙΣ',title:'Φαγητό & ποτό',text:'Μια επιλογή από τοπικά εστιατόρια, καφέ και χαλαρά σημεία για πρωινό, μεσημεριανό, βραδινό ή ένα ποτό αργότερα.'},
+    parking:{eyebrow:'ΠΑΡΚΙΝΓΚ',title:'Ιδιωτικό πάρκινγκ',text:'Υπάρχει ιδιωτικός χώρος στάθμευσης δίπλα στο κατάλυμα και προορίζεται αποκλειστικά για τους επισκέπτες κατά τη διάρκεια της διαμονής τους. Η πρόσβαση γίνεται από την κύρια είσοδο και παρακαλούμε να διατηρείτε τον χώρο ελεύθερο.'},
+    transport:{eyebrow:'ΜΕΤΑΚΙΝΗΣΕΙΣ',title:'Μετακινήσεις',text:'Ο πιο εύκολος τρόπος για να εξερευνήσετε την περιοχή είναι με αυτοκίνητο, ενώ διατίθενται επίσης ταξί και τοπικές μεταφορές. Μπορεί να οργανωθεί μεταφορά από και προς το αεροδρόμιο κατόπιν συνεννόησης.'},
+    pharmacy:{eyebrow:'ΦΑΡΜΑΚΕΙΟ & ΕΙΔΗ ΠΡΩΤΗΣ ΑΝΑΓΚΗΣ',title:'Φαρμακείο & είδη πρώτης ανάγκης',text:'Το κοντινότερο φαρμακείο βρίσκεται περίπου 4 λεπτά μακριά με το αυτοκίνητο. Σε κοντινή απόσταση υπάρχει επίσης ένα μικρό κατάστημα και φούρνος για καθημερινές ανάγκες.'},
+    emergency:{eyebrow:'ΠΛΗΡΟΦΟΡΙΕΣ ΕΚΤΑΚΤΗΣ ΑΝΑΓΚΗΣ',title:'Επικοινωνία σε περίπτωση ανάγκης',text:'Για οποιοδήποτε σοβαρό επείγον περιστατικό καλέστε το 112. Για μη επείγοντα θέματα, επικοινωνήστε με τον οικοδεσπότη, ο οποίος μπορεί να σας βοηθήσει να απευθυνθείτε στην κατάλληλη υπηρεσία.'}
+  };
+  const demoDetailsDe={
+    beaches:{eyebrow:'01 / DRAUSSEN',title:'Strände & Sonnenuntergänge',text:'Einige unserer Lieblingsorte für einen entspannten Tag am Meer. Von ruhigen Buchten zum Schwimmen bis zu schönen Aussichtspunkten für den Sonnenuntergang – diese Orte empfehlen wir unseren Gästen.'},
+    food:{eyebrow:'02 / LOKALE GENÜSSE',title:'Essen & Trinken',text:'Eine Auswahl an lokalen Restaurants, Cafés und entspannten Orten für Frühstück, Mittagessen, Abendessen oder einen Drink am Abend.'},
+    parking:{eyebrow:'PARKEN',title:'Privater Parkplatz',text:'Neben der Unterkunft steht ein privater Parkplatz zur Verfügung, der während Ihres Aufenthalts ausschließlich unseren Gästen vorbehalten ist. Die Zufahrt erfolgt über die Haupteinfahrt.'},
+    transport:{eyebrow:'UNTERWEGS',title:'Unterwegs',text:'Am einfachsten erkunden Sie die Umgebung mit dem Auto. Taxis und lokale Transfers sind ebenfalls verfügbar; Flughafentransfers können im Voraus organisiert werden.'},
+    pharmacy:{eyebrow:'APOTHEKE & WICHTIGES',title:'Apotheke & wichtige Dinge',text:'Die nächste Apotheke ist etwa 4 Autominuten entfernt. In der Nähe gibt es außerdem einen kleinen Laden und eine Bäckerei für den täglichen Bedarf.'},
+    emergency:{eyebrow:'NOTFALLINFORMATIONEN',title:'Notfallkontakte',text:'Bei einem ernsthaften Notfall wählen Sie 112. Bei nicht dringenden Fragen wenden Sie sich bitte an Ihren Gastgeber, der Ihnen bei der Kontaktaufnahme mit dem zuständigen Dienst helfen kann.'}
   };
 
   function openDemoDetail(key){
-    const d=demoDetails[key];
+    const lang=localStorage.getItem('aeliaLanguage')||'en';
+    const d=lang==='el'?demoDetailsEl[key]:(lang==='de'?demoDetailsDe[key]:demoDetails[key]);
     if(!d)return;
     const modal=document.getElementById('modal');
     modal.classList.add('detail-modal');
