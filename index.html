@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#536044">
+<title>Aelia Suites — Guest Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-overlay"></div>
+  <nav><span class="brand">AELIA <small>SUITES</small></span><button class="lang">EN</button></nav>
+  <div class="hero-copy">
+    <p class="eyebrow">YOUR DIGITAL GUEST GUIDE</p>
+    <h1>Welcome to<br><em>Aelia Suites</em></h1>
+    <p class="intro">Everything you need for a beautiful and effortless stay.</p>
+  </div>
+  <div class="scroll">EXPLORE <span>↓</span></div>
+</header>
+
+<main>
+<section class="welcome section">
+  <p class="eyebrow olive">A LITTLE SOMETHING FOR YOUR STAY</p>
+  <h2>Feel at home,<br><em>while away.</em></h2>
+  <p>From your first coffee to your last sunset, we have gathered everything you may need in one place.</p>
+</section>
+
+<section class="quick-grid section">
+  <button class="card featured" onclick="openInfo('checkin')"><span>✦</span><strong>Check-in</strong><small>Arrival & access</small></button>
+  <button class="card" onclick="openInfo('wifi')"><span>⌁</span><strong>Wi-Fi</strong><small>Stay connected</small></button>
+  <button class="card" onclick="openInfo('checkout')"><span>◷</span><strong>Check-out</strong><small>Before you leave</small></button>
+  <button class="card" onclick="openInfo('house')"><span>⌂</span><strong>House Guide</strong><small>Everything about the home</small></button>
+</section>
+
+<section class="discover section">
+  <div class="section-heading"><p class="eyebrow olive">DISCOVER THE AREA</p><h2>Make the most of<br><em>your surroundings.</em></h2></div>
+  <div class="places">
+    <article><div class="place-img beach"></div><div class="place-text"><span>01 / OUTDOORS</span><h3>Beaches & sunsets</h3><p>Our favourite spots for a slow afternoon by the sea.</p><button onclick="showToast('Beach recommendations coming right up.')">Explore <b>→</b></button></div></article>
+    <article><div class="place-img food"></div><div class="place-text"><span>02 / LOCAL FLAVOURS</span><h3>Eat & drink</h3><p>Hand-picked restaurants, cafés and places worth visiting.</p><button onclick="showToast('Local favourites are just a tap away.')">Explore <b>→</b></button></div></article>
+  </div>
+</section>
+
+<section class="essentials section">
+  <p class="eyebrow olive">GOOD TO KNOW</p>
+  <h2>Essentials</h2>
+  <div class="essential-list">
+    <button onclick="showToast('Parking: private parking is available beside the property.')"><span>⌖</span> Parking <b>→</b></button>
+    <button onclick="showToast('Need a taxi? Ask our assistant for help.')"><span>↗</span> Getting around <b>→</b></button>
+    <button onclick="showToast('The nearest pharmacy is 4 minutes away by car.')"><span>+</span> Pharmacy & essentials <b>→</b></button>
+    <button onclick="showToast('Emergency services: 112')"><span>!</span> Emergency information <b>→</b></button>
+  </div>
+</section>
+
+<section class="assistant section">
+  <div class="assistant-inner">
+    <div class="assistant-mark">✦</div>
+    <p class="eyebrow">YOUR PERSONAL GUEST ASSISTANT</p>
+    <h2>Need a hand?</h2>
+    <p>Ask anything about your stay, the property or the local area.</p>
+    <button class="gold-btn" onclick="openChat()">Ask the Assistant <span>→</span></button>
+  </div>
+</section>
+
+<section class="rules section">
+  <div><p class="eyebrow olive">A COMFORTABLE STAY FOR EVERYONE</p><h2>House rules</h2></div>
+  <ul><li><span>01</span>Please keep noise to a minimum after 11 PM.</li><li><span>02</span>No smoking inside the property.</li><li><span>03</span>Please treat the home with care.</li><li><span>04</span>Let us know if anything needs attention.</li></ul>
+</section>
+</main>
+
+<footer><div class="brand">AELIA <small>SUITES</small></div><p>We hope you enjoy every moment.</p><span>Powered by ELåiVA</span></footer>
+
+<div class="modal" id="modal" onclick="closeModal(event)"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><p class="eyebrow olive" id="modalEyebrow"></p><h2 id="modalTitle"></h2><p id="modalText"></p></div></div>
+
+<div class="chat" id="chat"><div class="chat-head"><div><b>Aelia Assistant</b><small>Here to help</small></div><button onclick="closeChat()">×</button></div><div class="messages"><div class="bubble bot">Hello! How can I help you during your stay?</div><div class="suggestions"><button onclick="ask('Where should I eat nearby?')">Where should I eat?</button><button onclick="ask('What time is check-out?')">Check-out time</button><button onclick="ask('What can I do nearby?')">Things to do</button></div></div><div class="chat-input"><input id="question" placeholder="Ask anything..." onkeydown="if(event.key==='Enter') ask(this.value)"><button onclick="ask(document.getElementById('question').value)">→</button></div></div>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
