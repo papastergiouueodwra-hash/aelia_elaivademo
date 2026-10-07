@@ -237,12 +237,9 @@ function submitBooking(e){
   localStorage.setItem('aeliaBookingRequests',JSON.stringify(bookings));
   ['bookingCardholder','bookingPayment','bookingExpiry','bookingCvv'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   window.dispatchEvent(new CustomEvent('aeliaBookingRequest',{detail:booking}));
-  document.getElementById('bookingContent').classList.add('hidden');
-  document.getElementById('bookingSuccess').classList.add('show');
-  const h=document.querySelector('#bookingSuccess h3'),p=document.querySelector('#bookingSuccess p'),b=document.querySelector('#bookingSuccess button');
-  if(h)h.textContent=map['Booking request received.']||h.textContent;
-  if(p)p.textContent=map['Thank you. Your stay request has been submitted successfully.']||p.textContent;
-  if(b)b.textContent=map['Done']||b.textContent;
+  sessionStorage.setItem('aeliaLatestBookingConfirmation',JSON.stringify({booking,lang}));
+  window.open('booking-confirmation.html','_blank');
+  document.getElementById('bookingModal').classList.remove('show');
 }
 </script></body>
 </html>
