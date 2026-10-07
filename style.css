@@ -97,3 +97,53 @@ footer{background:var(--cherry-deep)}
 .payment-demo-warning{padding:12px 14px;border:1px solid rgba(90,31,43,.35);background:rgba(90,31,43,.08);display:grid;gap:5px}
 .payment-demo-warning strong{font-size:10px;letter-spacing:.16em;color:#5a1f2b}
 .payment-demo-warning span{font-size:11px;line-height:1.5;color:#5a1f2b;font-weight:600}
+
+/* Booking form — olive green theme */
+#bookingModal .booking-modal{
+  background:#596449;
+  color:#f7f1e5;
+}
+#bookingModal .booking-modal h2,
+#bookingModal .booking-modal .eyebrow,
+#bookingModal .booking-modal .booking-subtitle,
+#bookingModal .booking-modal label,
+#bookingModal .booking-modal .booking-note{
+  color:#f7f1e5;
+}
+#bookingModal .booking-modal input,
+#bookingModal .booking-modal select{
+  background:#657052;
+  border-color:#7b856b;
+  color:#f7f1e5;
+}
+#bookingModal .booking-modal input::placeholder{
+  color:#e4ddd1;
+}
+#bookingModal .booking-modal input:focus,
+#bookingModal .booking-modal select:focus{
+  border-color:#d9c8c0;
+}
+#bookingModal .payment-demo-block{
+  background:#657052;
+  border-color:#7b856b;
+}
+#bookingModal .payment-demo-warning{
+  background:#4f5a42;
+  border-color:#7b856b;
+}
+#bookingModal .payment-demo-warning strong,
+#bookingModal .payment-demo-warning span{
+  color:#f7f1e5;
+}
+#bookingModal .gold-btn{
+  background:#5a1f2b;
+  border-color:#5a1f2b;
+  color:#f7eee8;
+}
+#bookingModal .close{
+  color:#f7f1e5;
+}
+#bookingModal .booking-success h3,
+#bookingModal .booking-success p{
+  color:#f7f1e5;
+}
