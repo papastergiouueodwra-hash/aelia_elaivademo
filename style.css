@@ -179,3 +179,13 @@ footer{background:var(--cherry-deep)}
 #bookingModal .payment-demo-warning span{
   color:#fffdf8;
 }
+
+/* Booking guest count readability */
+#bookingModal #guestCount{
+  color:#111;
+  background:rgba(255,255,255,.78);
+}
+#bookingModal #guestCount option{
+  color:#111;
+  background:#fff;
+}
