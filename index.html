@@ -38,7 +38,7 @@
 <body><div class="language-modal" id="languageModal"><div class="language-box"><p class="eyebrow">WELCOME / ΚΑΛΩΣ ΗΡΘΑΤΕ</p><h2>Choose your language</h2><p>Select your preferred language to continue.</p><div class="language-options"><button onclick="setLanguage('en')">English</button><button onclick="setLanguage('el')">Ελληνικά</button><button onclick="setLanguage('de')">Deutsch</button></div></div></div>
 <header class="hero">
   <div class="hero-overlay"></div>
-  <nav><span class="brand">AELIA <small>SUITES</small></span><button type="button" class="lang" id="currentLang">EN</button></nav>
+  <nav><span class="brand">AELIA <small>SUITES</small></span><button type="button" class="lang" id="currentLang" onclick="showLanguagePicker();return false;">EN</button></nav>
   <div class="hero-copy">
     <p class="eyebrow">YOUR DIGITAL GUEST GUIDE</p>
     <h1>Welcome to<br><em>Aelia Suites</em></h1>
@@ -122,23 +122,62 @@ el:{
 'YOUR DIGITAL GUEST GUIDE':'Ο ΨΗΦΙΑΚΟΣ ΟΔΗΓΟΣ ΔΙΑΜΟΝΗΣ ΣΑΣ','Welcome to':'Καλώς ήρθατε στο','Everything you need for a beautiful and effortless stay.':'Όλα όσα χρειάζεστε για μια όμορφη και ξέγνοιαστη διαμονή.','EXPLORE':'ΕΞΕΡΕΥΝΗΣΤΕ','CHOOSE YOUR STAY':'ΕΠΙΛΕΞΤΕ ΤΗ ΔΙΑΜΟΝΗ ΣΑΣ','Which home':'Ποιο σπίτι','feels like you?':'ταιριάζει σε εσάς;','Explore our hand-picked stays and discover the details of each home before you book.':'Εξερευνήστε τις επιλεγμένες κατοικίες μας και δείτε τις λεπτομέρειες κάθε σπιτιού πριν κάνετε κράτηση.','View home':'Δείτε το σπίτι','2 guests · 1 bedroom · Sea view':'2 επισκέπτες · 1 υπνοδωμάτιο · Θέα στη θάλασσα','4 guests · 2 bedrooms · Garden':'4 επισκέπτες · 2 υπνοδωμάτια · Κήπος','6 guests · 3 bedrooms · Pool':'6 επισκέπτες · 3 υπνοδωμάτια · Πισίνα','2 guests · 1 bedroom · Private terrace':'2 επισκέπτες · 1 υπνοδωμάτιο · Ιδιωτική βεράντα','A LITTLE SOMETHING FOR YOUR STAY':'ΚΑΤΙ ΞΕΧΩΡΙΣΤΟ ΓΙΑ ΤΗ ΔΙΑΜΟΝΗ ΣΑΣ','Feel at home,':'Νιώστε σαν στο σπίτι σας,','while away.':'και απολαύστε τη διαμονή σας.','From your first coffee to your last sunset, we have gathered everything you may need in one place.':'Από τον πρώτο σας καφέ μέχρι το τελευταίο ηλιοβασίλεμα, συγκεντρώσαμε όλα όσα μπορεί να χρειαστείτε σε ένα σημείο.','Check-in':'Άφιξη','Arrival & access':'Άφιξη & πρόσβαση','Wi-Fi':'Wi-Fi','Stay connected':'Παραμείνετε συνδεδεμένοι','Check-out':'Αναχώρηση','Before you leave':'Πριν φύγετε','House Guide':'Οδηγός σπιτιού','Everything about the home':'Όλα όσα αφορούν το σπίτι','DISCOVER THE AREA':'ΑΝΑΚΑΛΥΨΤΕ ΤΗΝ ΠΕΡΙΟΧΗ','Make the most of':'Απολαύστε στο έπακρο','your surroundings.':'το περιβάλλον γύρω σας.','Beaches & sunsets':'Παραλίες & ηλιοβασιλέματα','Our favourite spots for a slow afternoon by the sea.':'Τα αγαπημένα μας σημεία για ένα ήρεμο απόγευμα δίπλα στη θάλασσα.','Eat & drink':'Φαγητό & ποτό','Hand-picked restaurants, cafés and places worth visiting.':'Επιλεγμένα εστιατόρια, καφέ και μέρη που αξίζει να επισκεφθείτε.','Explore':'Εξερευνήστε','GOOD TO KNOW':'ΧΡΗΣΙΜΕΣ ΠΛΗΡΟΦΟΡΙΕΣ','Essentials':'Χρήσιμα','Parking':'Πάρκινγκ','Getting around':'Μετακινήσεις','Pharmacy & essentials':'Φαρμακείο & είδη πρώτης ανάγκης','Emergency information':'Πληροφορίες έκτακτης ανάγκης','YOUR PERSONAL GUEST ASSISTANT':'Ο ΠΡΟΣΩΠΙΚΟΣ ΣΑΣ ΒΟΗΘΟΣ','Need a hand?':'Χρειάζεστε βοήθεια;','Ask anything about your stay, the property or the local area.':'Ρωτήστε οτιδήποτε για τη διαμονή, το σπίτι ή την περιοχή.','Ask the Assistant':'Ρωτήστε τον βοηθό','A COMFORTABLE STAY FOR EVERYONE':'ΜΙΑ ΑΝΕΤΗ ΔΙΑΜΟΝΗ ΓΙΑ ΟΛΟΥΣ','House rules':'Κανόνες σπιτιού','Please keep noise to a minimum after 11 PM.':'Παρακαλούμε κρατήστε χαμηλά τον θόρυβο μετά τις 23:00.','No smoking inside the property.':'Απαγορεύεται το κάπνισμα μέσα στο σπίτι.','Please treat the home with care.':'Παρακαλούμε να φροντίζετε το σπίτι.','Let us know if anything needs attention.':'Ενημερώστε μας αν χρειάζεται κάτι την προσοχή σας.','We hope you enjoy every moment.':'Ευχόμαστε να απολαύσετε κάθε στιγμή.','Powered by ELåiVA':'Powered by ELåiVA','Book this home →':'Κάντε κράτηση →','Aelia Olive House':'Aelia Olive House','Casa Verde':'Casa Verde','The Red Villa':'The Red Villa','Maison Aurelia':'Maison Aurelia','SIGNATURE':'ΥΠΟΓΡΑΦΗ','COASTAL':'ΠΑΡΑΚΤΙΑ','PRIVATE':'ΙΔΙΩΤΙΚΗ','ESCAPE':'ΑΠΟΔΡΑΣΗ','A calm, sun-filled retreat designed for slow mornings and long evenings. Perfect for couples looking for a private, elegant escape.':'Ένα ήρεμο, φωτεινό καταφύγιο για χαλαρά πρωινά και όμορφα βράδια. Ιδανικό για ζευγάρια που αναζητούν μια ιδιωτική και κομψή απόδραση.','A warm coastal home surrounded by greenery, with generous spaces for friends or a small family.':'Μια ζεστή παραθαλάσσια κατοικία μέσα στο πράσινο, με άνετους χώρους για φίλους ή μια μικρή οικογένεια.','A characterful villa for longer stays, with a private pool, spacious living areas and room to slow down.':'Μια ξεχωριστή βίλα για μεγαλύτερες διαμονές, με ιδιωτική πισίνα, ευρύχωρους χώρους και άνεση για χαλάρωση.','An intimate hideaway with a private terrace, soft interiors and everything you need for a peaceful stay.':'Ένα ζεστό καταφύγιο με ιδιωτική βεράντα, ήρεμους εσωτερικούς χώρους και όλα όσα χρειάζεστε για μια όμορφη διαμονή.','BOOK YOUR STAY':'ΚΑΝΤΕ ΚΡΑΤΗΣΗ','Full name':'Ονοματεπώνυμο','Phone':'Τηλέφωνο','Number of guests':'Αριθμός επισκεπτών','Payment':'Πληρωμή','Confirm & pay →':'Επιβεβαίωση & πληρωμή →','Demo booking only — no real payment will be processed.':'Πρόκειται για δοκιμαστική κράτηση — δεν θα πραγματοποιηθεί πραγματική χρέωση.','Booking request received.':'Το αίτημα κράτησης ελήφθη.','Thank you. Your stay request has been submitted successfully.':'Ευχαριστούμε. Το αίτημα διαμονής σας υποβλήθηκε επιτυχώς.','Done':'Ολοκλήρωση','Aelia Assistant':'Βοηθός Aelia','Here to help':'Εδώ για να βοηθήσω','Hello! How can I help you during your stay?':'Γεια σας! Πώς μπορώ να σας βοηθήσω κατά τη διαμονή σας;','Where should I eat?':'Πού να φάω;','Check-out time':'Ώρα αναχώρησης','Things to do':'Τι μπορώ να κάνω;','Ask anything...':'Ρωτήστε οτιδήποτε...'}
 };
 function translateStatic(lang){
- currentLanguage=lang; document.documentElement.lang=lang;
- const map=T[lang];
- const source=T.en;
- const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
- let node; while(node=walker.nextNode()){const key=node.nodeValue.trim();if(map[key]){node.nodeValue=node.nodeValue.replace(key,map[key]);}else{const reverse=Object.keys(source).find(k=>source[k]===key);if(reverse&&map[reverse])node.nodeValue=node.nodeValue.replace(key,map[reverse]);}}
- document.querySelectorAll('input[placeholder]').forEach(x=>{const key=x.getAttribute('placeholder');if(map[key])x.placeholder=map[key];else{const reverse=Object.keys(source).find(k=>source[k]===key);if(reverse&&map[reverse])x.placeholder=map[reverse]}});
- document.getElementById('currentLang').textContent=lang==='el'?'GR':(lang==='de'?'DE':'EN');
+  const map=T[lang]||T.en;
+  const source=T.en;
+  currentLanguage=lang;
+  document.documentElement.lang=lang;
+
+  // Store each English text key once, so switching works from ANY language to ANY other language.
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  let node;
+  while(node=walker.nextNode()){
+    const raw=node.nodeValue;
+    const trimmed=raw.trim();
+    if(!trimmed) continue;
+    if(!node.parentElement.dataset.i18nKey){
+      const key=Object.keys(source).find(k=>k===trimmed);
+      if(key) node.parentElement.dataset.i18nKey=key;
+    }
+    const key=node.parentElement.dataset.i18nKey;
+    if(key && map[key]){
+      const leading=raw.match(/^\\s*/)?.[0]||'';
+      const trailing=raw.match(/\\s*$/)?.[0]||'';
+      node.nodeValue=leading+map[key]+trailing;
+    }
+  }
+
+  document.querySelectorAll('input[placeholder]').forEach(input=>{
+    const current=input.getAttribute('data-i18n-placeholder')||input.getAttribute('placeholder');
+    if(!input.getAttribute('data-i18n-placeholder')){
+      const key=Object.keys(source).find(k=>k===current);
+      if(key) input.setAttribute('data-i18n-placeholder',key);
+    }
+    const key=input.getAttribute('data-i18n-placeholder');
+    if(key && map[key]) input.placeholder=map[key];
+  });
+
+  const button=document.getElementById('currentLang');
+  if(button) button.textContent=lang==='el'?'GR':(lang==='de'?'DE':'EN');
 }
+
 function setLanguage(lang){
- translateStatic(lang);
- document.getElementById('languageModal').classList.add('hidden');
- localStorage.setItem('aeliaLanguage',lang);
+  translateStatic(lang);
+  const modal=document.getElementById('languageModal');
+  modal.classList.add('hidden');
+  modal.style.display='none';
+  localStorage.setItem('aeliaLanguage',lang);
 }
-function showLanguagePicker(){document.getElementById('languageModal').classList.remove('hidden');document.getElementById('languageModal').style.display='flex'}
-document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('currentLang');if(b)b.addEventListener('click',showLanguagePicker);});
-window.addEventListener('DOMContentLoaded',()=>{if(currentLanguage)translateStatic(currentLanguage)});
-</script>
+
+function showLanguagePicker(){
+  const modal=document.getElementById('languageModal');
+  modal.classList.remove('hidden');
+  modal.style.display='flex';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const saved=localStorage.getItem('aeliaLanguage');
+  if(saved && T[saved]) translateStatic(saved);
+});</script>
 <script>
 const properties=[{image:'airbnb.jpg',name:'Aelia Olive House',tag:'01 / SIGNATURE',text:'A calm, sun-filled retreat designed for slow mornings and long evenings. Perfect for couples looking for a private, elegant escape.',details:[['Guests','2'],['Bedrooms','1'],['Bathrooms','1'],['View','Sea view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private terrace']]},{image:'airbnb1.jpg',name:'Casa Verde',tag:'02 / COASTAL',text:'A warm coastal home surrounded by greenery, with generous spaces for friends or a small family.',details:[['Guests','4'],['Bedrooms','2'],['Bathrooms','2'],['View','Garden'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Garden & dining']]},{image:'airbnb2.jpg',name:'The Red Villa',tag:'03 / PRIVATE',text:'A characterful villa for longer stays, with a private pool, spacious living areas and room to slow down.',details:[['Guests','6'],['Bedrooms','3'],['Bathrooms','2'],['View','Pool view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private pool']]},{image:'airbnb3.jpg',name:'Maison Aurelia',tag:'04 / ESCAPE',text:'An intimate hideaway with a private terrace, soft interiors and everything you need for a peaceful stay.',details:[['Guests','2'],['Bedrooms','1'],['Bathrooms','1'],['View','Terrace view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private terrace']]}];
 let selectedProperty=null;
