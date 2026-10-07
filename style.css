@@ -57,3 +57,8 @@ footer{background:var(--cherry-deep)}
 /* Language selector: keep it above the hero overlay and always clickable */
 .hero nav{position:relative;z-index:50}
 #currentLang{position:relative;z-index:51;pointer-events:auto}
+
+
+/* Essentials: compact layout, with no image/placeholder space above the links */
+.essentials{padding-top:45px}
+.essentials h2{margin-bottom:18px}
