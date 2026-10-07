@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Booking Confirmation — Aelia Suites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#596449;color:#f7f1e5;font-family:'DM Sans',sans-serif}
+.card{width:min(620px,100%);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:38px;box-shadow:0 25px 70px rgba(0,0,0,.18)}
+.eyebrow{font-size:10px;letter-spacing:.2em;font-weight:700;margin:0 0 12px}
+h1{font:700 52px/1 'Cormorant Garamond',serif;margin:0 0 14px}
+.lead{line-height:1.7;color:#eee6dd}
+.details{margin-top:28px;border-top:1px solid rgba(255,255,255,.25)}
+.row{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.row span{font-size:12px;color:#e7ddd4}.row strong{font-size:13px;text-align:right}
+.note{margin-top:24px;padding:14px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.08);font-size:12px;line-height:1.6}
+button{margin-top:24px;border:0;background:#5a1f2b;color:#fff;padding:14px 20px;font-weight:700;cursor:pointer}
+@media(max-width:600px){.card{padding:28px 22px}h1{font-size:42px}.row{align-items:flex-start}}
+</style>
+</head>
+<body>
+<main class="card">
+<p class="eyebrow" id="eyebrow">BOOKING REQUEST</p>
+<h1 id="title">Booking request received.</h1>
+<p class="lead" id="lead">Thank you. Your stay request has been submitted successfully.</p>
+<div class="details">
+  <div class="row"><span id="propertyLabel">Property</span><strong id="property"></strong></div>
+  <div class="row"><span id="datesLabel">Dates</span><strong id="dates"></strong></div>
+  <div class="row"><span id="guestsLabel">Guests</span><strong id="guests"></strong></div>
+  <div class="row"><span id="nameLabel">Name</span><strong id="name"></strong></div>
+  <div class="row"><span id="phoneLabel">Phone</span><strong id="phone"></strong></div>
+</div>
+<p class="note" id="note">Demo only — no real payment has been processed and no card details are stored.</p>
+<button onclick="window.close()" id="closeBtn">Close</button>
+</main>
+<script>
+const data=JSON.parse(sessionStorage.getItem('aeliaLatestBookingConfirmation')||'null');
+const lang=data?.lang||'en';
+const b=data?.booking||{};
+const c={
+en:{eyebrow:'BOOKING REQUEST',title:'Booking request received.',lead:'Thank you. Your stay request has been submitted successfully.',property:'Property',dates:'Dates',guests:'Guests',name:'Name',phone:'Phone',note:'Demo only — no real payment has been processed and no card details are stored.',close:'Close'},
+el:{eyebrow:'ΑΙΤΗΜΑ ΚΡΑΤΗΣΗΣ',title:'Το αίτημα κράτησης ελήφθη.',lead:'Ευχαριστούμε. Το αίτημα διαμονής σας υποβλήθηκε επιτυχώς.',property:'Κατάλυμα',dates:'Ημερομηνίες',guests:'Επισκέπτες',name:'Ονοματεπώνυμο',phone:'Τηλέφωνο',note:'Πρόκειται για demo — δεν πραγματοποιήθηκε πραγματική χρέωση και δεν αποθηκεύονται στοιχεία κάρτας.',close:'Κλείσιμο'},
+de:{eyebrow:'BUCHUNGSANFRAGE',title:'Buchungsanfrage erhalten.',lead:'Vielen Dank. Ihre Buchungsanfrage wurde erfolgreich übermittelt.',property:'Unterkunft',dates:'Daten',guests:'Gäste',name:'Name',phone:'Telefon',note:'Nur Demo — es wurde keine echte Zahlung verarbeitet und keine Kartendaten gespeichert.',close:'Schließen'}
+}[lang]||null;
+if(c){
+  eyebrow.textContent=c.eyebrow;title.textContent=c.title;lead.textContent=c.lead;
+  propertyLabel.textContent=c.property;datesLabel.textContent=c.dates;guestsLabel.textContent=c.guests;nameLabel.textContent=c.name;phoneLabel.textContent=c.phone;note.textContent=c.note;closeBtn.textContent=c.close;
+}
+property.textContent=b.property||'—';
+dates.textContent=(b.checkin||'—')+' → '+(b.checkout||'—');
+guests.textContent=b.guests||'—';
+name.textContent=b.name||'—';
+phone.textContent=b.phone||'—';
+</script>
+</body>
+</html>
