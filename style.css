@@ -22,3 +22,22 @@ footer{background:var(--cherry-deep)}
 .assistant .eyebrow{color:#e0b8c0}.assistant p:not(.eyebrow){color:#eadbdd}
 .toast{background:var(--cherry-red)}
 .gold-btn{background:var(--cherry-red);border-color:var(--cherry-red);color:#f7eee8}
+
+/* Stronger cherry-red typography below the hero */
+.stay-picker,.welcome,.quick-grid,.discover,.essentials,.rules{color:#5a1f2b}
+.stay-picker .eyebrow,.welcome .eyebrow,.discover .eyebrow,.essentials .eyebrow,.rules .eyebrow{color:#5a1f2b;font-weight:700}
+.stay-picker h2,.welcome h2,.discover h2,.essentials h2,.rules h2{color:#5a1f2b;font-weight:700}
+.stay-picker h2 em,.welcome h2 em,.discover h2 em{color:#5a1f2b}
+.picker-intro,.welcome>p:last-child,.place-text p,.rules li{color:#f0e2df;font-weight:500}
+.house-card{color:#5a1f2b}.house-card span,.house-card h3,.house-card p,.house-card strong,.house-card strong b{color:#5a1f2b}
+.card,.card strong,.card small,.card span{color:#5a1f2b}.card span{font-weight:700}
+.card.featured{background:#5a1f2b;color:#f7f1e5}.card.featured strong{color:#f7f1e5}.card.featured span,.card.featured small{color:#f0e2df}
+.place-text>span,.place-text h3,.place-text button,.place-text b{color:#5a1f2b}
+.essential-list button,.essential-list b,.essential-list span{color:#f7e9e6}
+.rules li span{color:#f0cfd3}
+/* Replace remaining gold accents with dark cherry red */
+.gold-btn,.gold-btn:hover{background:#5a1f2b;border-color:#5a1f2b;color:#f7eee8}
+.scroll span,.card span,.place-text b,.essential-list b,.essential-list span,.assistant-mark,.assistant .eyebrow,.chat-head small,.toast{color:#5a1f2b}
+.hero h1 em,h2 em{color:#5a1f2b}
+.lang{border-color:#5a1f2b;color:#f8f1df}
+.property-modal .property-copy .eyebrow{color:#5a1f2b}
