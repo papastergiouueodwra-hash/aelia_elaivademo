@@ -638,3 +638,21 @@ body.room-photo-open{overflow:hidden}
   .room-lightbox-inner{width:calc(100vw - 24px)!important}
   .room-lightbox-image{width:100%!important}
 }
+
+/* Static property room gallery — no zoom/lightbox */
+.room-photo-button{display:none!important}
+.property-gallery .room-grid-photo{
+  width:100%!important;
+  aspect-ratio:4/3!important;
+  height:auto!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  display:block!important;
+  cursor:default!important;
+  transform:none!important;
+  filter:none!important;
+}
+.property-gallery figure:hover .room-grid-photo{
+  transform:none!important;
+}
+.room-lightbox{display:none!important}
