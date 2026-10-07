@@ -149,19 +149,19 @@ function openGuestExtra(key){const lang=currentPopupLang();const d=(guestExtraCo
 /* Functional guest request flow */
 const requestCopy={
 en:{
-towelsRequest:{eyebrow:'GUEST REQUEST',title:'Extra towels',placeholder:'Anything else we should know?',button:'Send request',success:'Your request has been sent.',successText:'The host team can now see your request.'},
+towelsRequest:{eyebrow:'GUEST REQUEST',title:'Extra towels',quantityLabel:'How many extra towels?',placeholder:'Anything else we should know?',button:'Send request',success:'Your request has been sent.',successText:'The host team can now see your request.'},
 cleaningRequest:{eyebrow:'GUEST REQUEST',title:'Request cleaning',placeholder:'Preferred day or any details?',button:'Send request',success:'Cleaning request sent.',successText:'The host team can now see your request.'},
 issue:{eyebrow:'GUEST REQUEST',title:'Report an issue',placeholder:'Please describe the issue...',button:'Report issue',success:'Issue reported.',successText:'The host team can now see your report.'},
 question:{eyebrow:'GUEST REQUEST',title:'Ask the host',placeholder:'Write your question...',button:'Send message',success:'Message sent.',successText:'The host team can now see your message.'}
 },
 el:{
-towelsRequest:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Επιπλέον πετσέτες',placeholder:'Κάτι ακόμη που πρέπει να γνωρίζουμε;',button:'Αποστολή αιτήματος',success:'Το αίτημα στάλθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει το αίτημά σας.'},
+towelsRequest:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Επιπλέον πετσέτες',quantityLabel:'Πόσες επιπλέον πετσέτες χρειάζεστε;',placeholder:'Κάτι ακόμη που πρέπει να γνωρίζουμε;',button:'Αποστολή αιτήματος',success:'Το αίτημα στάλθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει το αίτημά σας.'},
 cleaningRequest:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Αίτημα καθαρισμού',placeholder:'Προτιμώμενη ημέρα ή κάποια λεπτομέρεια;',button:'Αποστολή αιτήματος',success:'Το αίτημα καθαρισμού στάλθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει το αίτημά σας.'},
 issue:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Αναφορά προβλήματος',placeholder:'Περιγράψτε το πρόβλημα...',button:'Αναφορά προβλήματος',success:'Το πρόβλημα αναφέρθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει την αναφορά σας.'},
 question:{eyebrow:'ΑΙΤΗΜΑ ΕΠΙΣΚΕΠΤΗ',title:'Επικοινωνία με οικοδεσπότη',placeholder:'Γράψτε την ερώτησή σας...',button:'Αποστολή μηνύματος',success:'Το μήνυμα στάλθηκε.',successText:'Η ομάδα του καταλύματος μπορεί πλέον να δει το μήνυμά σας.'}
 },
 de:{
-towelsRequest:{eyebrow:'GÄSTEANFRAGE',title:'Zusätzliche Handtücher',placeholder:'Gibt es noch etwas?',button:'Anfrage senden',success:'Ihre Anfrage wurde gesendet.',successText:'Das Unterkunftsteam kann Ihre Anfrage jetzt sehen.'},
+towelsRequest:{eyebrow:'GÄSTEANFRAGE',title:'Zusätzliche Handtücher',quantityLabel:'Wie viele zusätzliche Handtücher benötigen Sie?',placeholder:'Gibt es noch etwas?',button:'Anfrage senden',success:'Ihre Anfrage wurde gesendet.',successText:'Das Unterkunftsteam kann Ihre Anfrage jetzt sehen.'},
 cleaningRequest:{eyebrow:'GÄSTEANFRAGE',title:'Reinigung anfragen',placeholder:'Bevorzugter Tag oder weitere Details?',button:'Anfrage senden',success:'Reinigungsanfrage gesendet.',successText:'Das Unterkunftsteam kann Ihre Anfrage jetzt sehen.'},
 issue:{eyebrow:'GÄSTEANFRAGE',title:'Problem melden',placeholder:'Bitte beschreiben Sie das Problem...',button:'Problem melden',success:'Problem gemeldet.',successText:'Das Unterkunftsteam kann Ihre Meldung jetzt sehen.'},
 question:{eyebrow:'GÄSTEANFRAGE',title:'Gastgeber fragen',placeholder:'Schreiben Sie Ihre Frage...',button:'Nachricht senden',success:'Nachricht gesendet.',successText:'Das Unterkunftsteam kann Ihre Nachricht jetzt sehen.'}
@@ -178,9 +178,13 @@ function openGuestRequest(key){
   document.getElementById('propertyBook').style.display='none';
   document.getElementById('modalEyebrow').textContent=d.eyebrow;
   document.getElementById('modalTitle').textContent=d.title;
+  const quantityField=key==='towelsRequest'
+    ? '<label class="request-quantity-label" for="guestRequestQuantity">'+d.quantityLabel+'</label><select id="guestRequestQuantity" required><option value="">—</option>'+[1,2,3,4,5,6,7,8,9,10].map(n=>'<option value="'+n+'">'+n+'</option>').join('')+'</select>'
+    : '';
   document.getElementById('modalText').innerHTML=
     '<form class="guest-request-form" onsubmit="submitGuestRequest(event)">'+
     '<input id="guestRequestName" required type="text" placeholder="'+(lang==='el'?'Το όνομά σας':lang==='de'?'Ihr Name':'Your name')+'">'+
+    quantityField+
     '<textarea id="guestRequestMessage" placeholder="'+d.placeholder+'"></textarea>'+
     '<button type="submit">'+d.button+' <span>→</span></button>'+
     '</form>';
@@ -192,10 +196,16 @@ function submitGuestRequest(e){
   const d=(requestCopy[lang]||requestCopy.en)[activeRequestKey];
   const name=document.getElementById('guestRequestName').value.trim();
   const message=document.getElementById('guestRequestMessage').value.trim();
+  const quantityEl=document.getElementById('guestRequestQuantity');
+  const quantity=quantityEl?Number(quantityEl.value):null;
+  const property=selectedProperty?.name||'Aelia Suites';
   const requests=JSON.parse(localStorage.getItem('aeliaGuestRequests')||'[]');
-  requests.push({type:activeRequestKey,name,message,createdAt:new Date().toISOString()});
+  const request={type:activeRequestKey,property,name,message,quantity,createdAt:new Date().toISOString(),status:'new'};
+  requests.push(request);
   localStorage.setItem('aeliaGuestRequests',JSON.stringify(requests));
+  window.dispatchEvent(new CustomEvent('aeliaGuestRequest',{detail:request}));
   document.getElementById('modalEyebrow').textContent=d.eyebrow;
   document.getElementById('modalTitle').textContent=d.success;
-  document.getElementById('modalText').innerHTML='<div class="request-success"><span>✓</span><p>'+d.successText+'</p></div>';
+  const extra=quantity?(lang==='el'?' Ζητήσατε '+quantity+' επιπλέον πετσέτες.':lang==='de'?' Sie haben '+quantity+' zusätzliche Handtücher angefragt.':' You requested '+quantity+' extra towels.'):'';
+  document.getElementById('modalText').innerHTML='<div class="request-success"><span>✓</span><p>'+d.successText+extra+'</p></div>';
 }
