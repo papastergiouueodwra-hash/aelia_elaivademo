@@ -113,7 +113,7 @@
 <footer><div class="brand">AELIA <small>SUITES</small></div><p>We hope you enjoy every moment.</p><span>Powered by ELåiVA</span></footer>
 
 <div class="modal" id="modal" onclick="closeModal(event)"><div class="modal-box property-modal"><button class="close" onclick="closeModal()">×</button><img id="modalImage" class="property-image" src="" alt=""><div class="property-copy"><p class="eyebrow olive" id="modalEyebrow"></p><h2 id="modalTitle"></h2><p id="modalText"></p><div class="property-gallery-wrap" id="propertyGalleryWrap"><p class="property-gallery-title" id="propertyGalleryTitle">Inside the home</p><div class="property-gallery" id="propertyGallery"></div></div><div class="property-tour"><p class="property-tour-title" id="propertyTourTitle">Explore the home</p><div class="property-details" id="propertyDetails"></div></div><button class="gold-btn property-book" id="propertyBook" onclick="openBooking()">Book this home <span>→</span></button></div></div></div>
-<div class="room-lightbox" id="roomLightbox" onclick="closeRoomPhoto(event)"><button class="room-lightbox-close" type="button" onclick="closeRoomPhoto()">×</button><div class="room-lightbox-inner"><div class="room-lightbox-image" id="roomLightboxImage"></div><div class="room-lightbox-caption" id="roomLightboxCaption"></div><div class="room-lightbox-thumbs" id="roomLightboxThumbs"></div></div></div>
+<div class="room-lightbox" id="roomLightbox" onclick="closeRoomPhoto(event)"><button class="room-lightbox-close" type="button" onclick="closeRoomPhoto()">×</button><div class="room-lightbox-inner"><img class="room-lightbox-image" id="roomLightboxImage" src="" alt=""><div class="room-lightbox-caption" id="roomLightboxCaption"></div><div class="room-lightbox-thumbs" id="roomLightboxThumbs"></div></div></div>
 <div class="modal" id="bookingModal" onclick="closeBooking(event)"><div class="modal-box booking-modal"><button class="close" onclick="closeBooking()">×</button><div id="bookingContent"><p class="eyebrow olive">BOOK YOUR STAY</p><h2 id="bookingTitle"></h2><p class="booking-subtitle" id="bookingSubtitle"></p><form class="booking-form" onsubmit="submitBooking(event)"><div class="booking-row"><div class="field"><label>Check-in</label><input id="bookingCheckin" type="date" required></div><div class="field"><label>Check-out</label><input id="bookingCheckout" type="date" required></div></div><div class="field"><label id="bookingNameLabel">Full name</label><input id="bookingName" type="text" placeholder="Your full name" required></div><div class="field"><label>Phone</label><input id="bookingPhone" type="tel" placeholder="+30 ..." required></div><div class="field"><label>Number of guests</label><select id="guestCount" required></select></div><div class="payment-demo-block"><div class="payment-demo-warning"><strong>DEMO PAYMENT</strong><span>Do not enter real card details. This is a demonstration only and no payment will be processed.</span></div><div class="field"><label>Cardholder name</label><input id="bookingCardholder" type="text" autocomplete="off" placeholder="Cardholder name" required></div><div class="field"><label>Card number</label><input id="bookingPayment" type="text" inputmode="numeric" autocomplete="off" maxlength="19" placeholder="0000 0000 0000 0000" required></div><div class="booking-row"><div class="field"><label>Expiry date</label><input id="bookingExpiry" type="text" inputmode="numeric" autocomplete="off" maxlength="5" placeholder="MM/YY" required></div><div class="field"><label>CVV</label><input id="bookingCvv" type="password" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="123" required></div></div></div><p class="booking-note">Demo booking only — no real payment will be processed.</p><button class="gold-btn" type="submit">Confirm & pay <span>→</span></button></form></div><div class="booking-success" id="bookingSuccess"><div class="assistant-mark">✦</div><h3>Booking request received.</h3><p>Thank you. Your stay request has been submitted successfully.</p><button class="gold-btn" onclick="closeBooking()">Done</button></div></div></div>
 
 <div class="chat" id="chat"><div class="chat-head"><div><b>Aelia Assistant</b><small>Here to help</small></div><button onclick="closeChat()">×</button></div><div class="messages"><div class="bubble bot">Hello! How can I help you during your stay?</div><div class="suggestions"><button data-chat-suggestion="food" onclick="askSuggestion('food')">Where should I eat?</button><button data-chat-suggestion="checkout" onclick="askSuggestion('checkout')">Check-out time</button><button data-chat-suggestion="things" onclick="askSuggestion('things')">Things to do</button></div></div><div class="chat-input"><input id="question" placeholder="Ask anything..." onkeydown="if(event.key==='Enter') ask(this.value)"><button onclick="ask(document.getElementById('question').value)">→</button></div></div>
@@ -183,10 +183,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 });</script>
 <script>
 const properties=[
-{image:'airbnb.jpg',name:'Aelia Olive House',tag:'01 / SIGNATURE',text:'A calm, sun-filled retreat designed for slow mornings and long evenings. Perfect for couples looking for a private, elegant escape.',details:[['Guests','2'],['Bedrooms','1'],['Bathrooms','1'],['View','Sea view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private terrace']],gallery:[['Living room',0,0],['Kitchen',1,0],['Bedroom',2,0],['Bathroom',3,0],['Veranda',4,0]]},
-{image:'airbnb1.jpg',name:'Casa Verde',tag:'02 / COASTAL',text:'A warm coastal home surrounded by greenery, with generous spaces for friends or a small family.',details:[['Guests','4'],['Bedrooms','2'],['Bathrooms','2'],['View','Garden'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Garden & dining']],gallery:[['Living room',0,1],['Kitchen',1,1],['Bedroom',2,1],['Bathroom',3,1],['Garden',4,1]]},
-{image:'airbnb2.jpg',name:'The Red Villa',tag:'03 / PRIVATE',text:'A characterful villa for longer stays, with a private pool, spacious living areas and room to slow down.',details:[['Guests','6'],['Bedrooms','3'],['Bathrooms','2'],['View','Pool view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private pool']],gallery:[['Living room',0,2],['Kitchen',1,2],['Bedroom',2,2],['Bathroom',3,2],['Pool / veranda',4,2]]},
-{image:'airbnb3.jpg',name:'Maison Aurelia',tag:'04 / ESCAPE',text:'An intimate hideaway with a private terrace, soft interiors and everything you need for a peaceful stay.',details:[['Guests','2'],['Bedrooms','1'],['Bathrooms','1'],['View','Terrace view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private terrace']],gallery:[['Living room',0,3],['Kitchen',1,3],['Bedroom',2,3],['Bathroom',3,3],['Veranda',4,3]]}
+{image:'airbnb.jpg',name:'Aelia Olive House',tag:'01 / SIGNATURE',text:'A calm, sun-filled retreat designed for slow mornings and long evenings. Perfect for couples looking for a private, elegant escape.',details:[['Guests','2'],['Bedrooms','1'],['Bathrooms','1'],['View','Sea view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private terrace']],gallery:[['Living room','assets/aelia-living.jpg'],['Kitchen','assets/aelia-kitchen.jpg'],['Bedroom','assets/aelia-bedroom.jpg'],['Bathroom','assets/aelia-bathroom.jpg'],['Veranda','assets/aelia-veranda.jpg']]},
+{image:'airbnb1.jpg',name:'Casa Verde',tag:'02 / COASTAL',text:'A warm coastal home surrounded by greenery, with generous spaces for friends or a small family.',details:[['Guests','4'],['Bedrooms','2'],['Bathrooms','2'],['View','Garden'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Garden & dining']],gallery:[['Living room','assets/casa-living.jpg'],['Kitchen','assets/casa-kitchen.jpg'],['Bedroom','assets/casa-bedroom.jpg'],['Bathroom','assets/casa-bathroom.jpg'],['Garden','assets/casa-veranda.jpg']]},
+{image:'airbnb2.jpg',name:'The Red Villa',tag:'03 / PRIVATE',text:'A characterful villa for longer stays, with a private pool, spacious living areas and room to slow down.',details:[['Guests','6'],['Bedrooms','3'],['Bathrooms','2'],['View','Pool view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private pool']],gallery:[['Living room','assets/red-living.jpg'],['Kitchen','assets/red-kitchen.jpg'],['Bedroom','assets/red-bedroom.jpg'],['Bathroom','assets/red-bathroom.jpg'],['Pool / veranda','assets/red-veranda.jpg']]},
+{image:'airbnb3.jpg',name:'Maison Aurelia',tag:'04 / ESCAPE',text:'An intimate hideaway with a private terrace, soft interiors and everything you need for a peaceful stay.',details:[['Guests','2'],['Bedrooms','1'],['Bathrooms','1'],['View','Terrace view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private terrace']],gallery:[['Living room','assets/maison-living.jpg'],['Kitchen','assets/maison-kitchen.jpg'],['Bedroom','assets/maison-bedroom.jpg'],['Bathroom','assets/maison-bathroom.jpg'],['Veranda','assets/maison-veranda.jpg']]}
 ]
 let selectedProperty=null;
 const propertyCopy={
@@ -211,10 +211,9 @@ function openProperty(i){
   if(p.gallery&&p.gallery.length){
     galleryWrap.style.display='block';
     document.getElementById('propertyGalleryTitle').textContent=copy.galleryTitle;
-    gallery.innerHTML=p.gallery.map(item=>{
-      const [room,col,row]=item;
+    gallery.innerHTML=p.gallery.map(([room,src])=>{
       const label=copy.rooms[room]||room;
-      return '<figure><button type="button" class="room-photo-button" data-label="'+label+'" onclick="openRoomPhoto('+col+','+row+',this.dataset.label)"><div class="property-sprite" role="img" aria-label="'+label+'" style="--sprite-col:'+col+';--sprite-row:'+row+'"></div></button><figcaption>'+label+'</figcaption></figure>';
+      return '<figure><button type="button" class="room-photo-button" data-src="'+src+'" data-label="'+label+'" onclick="openRoomPhoto(this.dataset.src,this.dataset.label)"><img class="room-grid-photo" src="'+src+'" alt="'+label+'" loading="lazy"></button><figcaption>'+label+'</figcaption></figure>';
     }).join('');
   }else{
     galleryWrap.style.display='none';
@@ -225,26 +224,26 @@ function openProperty(i){
   document.getElementById('propertyBook').textContent=copy.book;
   modal.classList.add('show');
 }
-function openRoomPhoto(col,row,label){
+function openRoomPhoto(src,label){
   const box=document.getElementById('roomLightbox');
   const image=document.getElementById('roomLightboxImage');
   const caption=document.getElementById('roomLightboxCaption');
-  image.style.setProperty('--sprite-col',col);
-  image.style.setProperty('--sprite-row',row);
+  image.src=src;
+  image.alt=label||'';
   caption.textContent=label||'';
-  renderRoomLightboxThumbs(col,row);
+  renderRoomLightboxThumbs(src);
   box.classList.add('show');
   document.body.classList.add('room-photo-open');
 }
-function renderRoomLightboxThumbs(activeCol,activeRow){
+function renderRoomLightboxThumbs(activeSrc){
   const thumbs=document.getElementById('roomLightboxThumbs');
   if(!thumbs || !selectedProperty?.gallery) return;
   const lang=currentPopupLang();
   const copy=propertyCopy[lang]||propertyCopy.en;
-  thumbs.innerHTML=selectedProperty.gallery.map(([room,col,row])=>{
+  thumbs.innerHTML=selectedProperty.gallery.map(([room,src])=>{
     const label=copy.rooms[room]||room;
-    const active=(col===activeCol && row===activeRow)?' active':'';
-    return '<button type="button" class="room-lightbox-thumb'+active+'" data-label="'+label+'" onclick="event.stopPropagation();openRoomPhoto('+col+','+row+',this.dataset.label)"><span class="room-lightbox-thumb-img" style="--sprite-col:'+col+';--sprite-row:'+row+'"></span><small>'+label+'</small></button>';
+    const active=src===activeSrc?' active':'';
+    return '<button type="button" class="room-lightbox-thumb'+active+'" data-src="'+src+'" data-label="'+label+'" onclick="event.stopPropagation();openRoomPhoto(this.dataset.src,this.dataset.label)"><img src="'+src+'" alt="'+label+'" loading="lazy"><small>'+label+'</small></button>';
   }).join('');
 }
 function closeRoomPhoto(e){
