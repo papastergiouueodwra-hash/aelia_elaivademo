@@ -522,3 +522,91 @@ body.room-photo-open{overflow:hidden}
     flex:0 0 120px;
   }
 }
+
+/* Final room gallery: individual photos, no sprite/cropping */
+.property-gallery{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:16px!important;
+  overflow:visible!important;
+}
+.property-gallery figure,
+.property-gallery figure:first-child{
+  width:auto!important;
+  grid-column:auto!important;
+  margin:0!important;
+  background:#fbf7ef!important;
+}
+.room-photo-button{
+  width:100%!important;
+  display:block!important;
+  padding:0!important;
+  border:0!important;
+  background:none!important;
+  cursor:zoom-in!important;
+  overflow:hidden!important;
+}
+.room-grid-photo{
+  width:100%!important;
+  aspect-ratio:4/3!important;
+  height:auto!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  image-rendering:auto!important;
+  transform:none!important;
+  filter:none!important;
+}
+.room-photo-button:hover .room-grid-photo{transform:scale(1.015)!important}
+.room-lightbox-inner{
+  width:min(700px,calc(100vw - 48px))!important;
+}
+.room-lightbox-image{
+  display:block!important;
+  width:auto!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:calc(100vh - 250px)!important;
+  margin:0 auto!important;
+  object-fit:contain!important;
+  background:none!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.45)!important;
+  image-rendering:auto!important;
+}
+.room-lightbox-thumbs{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:10px!important;
+  margin-top:14px!important;
+}
+.room-lightbox-thumb{
+  min-width:0!important;
+  padding:5px!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  background:rgba(255,255,255,.06)!important;
+  color:#fff!important;
+  cursor:pointer!important;
+}
+.room-lightbox-thumb img{
+  display:block!important;
+  width:100%!important;
+  aspect-ratio:4/3!important;
+  height:auto!important;
+  object-fit:cover!important;
+}
+.room-lightbox-thumb.active{
+  border-color:#fff!important;
+  background:rgba(255,255,255,.15)!important;
+  opacity:1!important;
+}
+@media(max-width:700px){
+  .property-gallery{grid-template-columns:1fr!important}
+  .room-lightbox-inner{width:calc(100vw - 28px)!important}
+  .room-lightbox-image{max-height:55vh!important}
+  .room-lightbox-thumbs{
+    display:flex!important;
+    overflow-x:auto!important;
+    gap:8px!important;
+  }
+  .room-lightbox-thumb{flex:0 0 120px!important}
+}
