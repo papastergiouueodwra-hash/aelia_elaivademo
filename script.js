@@ -183,7 +183,7 @@ function openGuestRequest(key){
     : '';
   document.getElementById('modalText').innerHTML=
     '<form class="guest-request-form" onsubmit="submitGuestRequest(event)">'+
-    '<input id="guestRequestName" required type="text" placeholder="'+(lang==='el'?'Το όνομά σας':lang==='de'?'Ihr Name':'Your name')+'">'+
+    '<input id="guestRequestBooking" required type="text" placeholder="'+(lang==='el'?'Αριθμός κράτησης':lang==='de'?'Buchungsnummer':'Booking number')+'">'+
     quantityField+
     '<textarea id="guestRequestMessage" placeholder="'+d.placeholder+'"></textarea>'+
     '<button type="submit">'+d.button+' <span>→</span></button>'+
@@ -194,13 +194,13 @@ function submitGuestRequest(e){
   e.preventDefault();
   const lang=currentPopupLang();
   const d=(requestCopy[lang]||requestCopy.en)[activeRequestKey];
-  const name=document.getElementById('guestRequestName').value.trim();
+  const bookingNumber=document.getElementById('guestRequestBooking').value.trim();
   const message=document.getElementById('guestRequestMessage').value.trim();
   const quantityEl=document.getElementById('guestRequestQuantity');
   const quantity=quantityEl?Number(quantityEl.value):null;
   const property=selectedProperty?.name||'Aelia Suites';
   const requests=JSON.parse(localStorage.getItem('aeliaGuestRequests')||'[]');
-  const request={type:activeRequestKey,property,name,message,quantity,createdAt:new Date().toISOString(),status:'new'};
+  const request={type:activeRequestKey,property,bookingNumber,message,quantity,createdAt:new Date().toISOString(),status:'new'};
   requests.push(request);
   localStorage.setItem('aeliaGuestRequests',JSON.stringify(requests));
   window.dispatchEvent(new CustomEvent('aeliaGuestRequest',{detail:request}));
