@@ -222,11 +222,22 @@ function submitBooking(e){
   e.preventDefault();
   const lang=currentPopupLang();
   const map=T[lang]||T.en;
+  const bookingName=document.getElementById('bookingName');
+  const fullName=bookingName?.value.trim()||'';
+  if(!fullName){
+    if(bookingName){
+      bookingName.setCustomValidity(lang==='el'?'Συμπληρώστε το ονοματεπώνυμό σας.':lang==='de'?'Bitte geben Sie Ihren vollständigen Namen ein.':'Please enter your full name.');
+      bookingName.reportValidity();
+      bookingName.focus();
+      setTimeout(()=>bookingName.setCustomValidity(''),100);
+    }
+    return;
+  }
   const booking={
     property:selectedProperty?.name||'',
     checkin:document.getElementById('bookingCheckin')?.value||'',
     checkout:document.getElementById('bookingCheckout')?.value||'',
-    name:document.getElementById('bookingName')?.value.trim()||'',
+    name:fullName,
     phone:document.getElementById('bookingPhone')?.value.trim()||'',
     guests:Number(document.getElementById('guestCount')?.value||1),
     createdAt:new Date().toISOString(),
