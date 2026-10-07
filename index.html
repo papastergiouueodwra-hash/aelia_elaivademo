@@ -38,7 +38,7 @@
 <body><div class="language-modal" id="languageModal"><div class="language-box"><p class="eyebrow">WELCOME / ΚΑΛΩΣ ΗΡΘΑΤΕ</p><h2>Choose your language</h2><p>Select your preferred language to continue.</p><div class="language-options"><button onclick="setLanguage('en')">English</button><button onclick="setLanguage('el')">Ελληνικά</button><button onclick="setLanguage('de')">Deutsch</button></div></div></div>
 <header class="hero">
   <div class="hero-overlay"></div>
-  <nav><span class="brand">AELIA <small>SUITES</small></span><button class="lang" id="currentLang" onclick="showLanguagePicker()">EN</button></nav>
+  <nav><span class="brand">AELIA <small>SUITES</small></span><button type="button" class="lang" id="currentLang">EN</button></nav>
   <div class="hero-copy">
     <p class="eyebrow">YOUR DIGITAL GUEST GUIDE</p>
     <h1>Welcome to<br><em>Aelia Suites</em></h1>
@@ -135,7 +135,8 @@ function setLanguage(lang){
  document.getElementById('languageModal').classList.add('hidden');
  localStorage.setItem('aeliaLanguage',lang);
 }
-function showLanguagePicker(){document.getElementById('languageModal').classList.remove('hidden')}
+function showLanguagePicker(){document.getElementById('languageModal').classList.remove('hidden');document.getElementById('languageModal').style.display='flex'}
+document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('currentLang');if(b)b.addEventListener('click',showLanguagePicker);});
 window.addEventListener('DOMContentLoaded',()=>{if(currentLanguage)translateStatic(currentLanguage)});
 </script>
 <script>
