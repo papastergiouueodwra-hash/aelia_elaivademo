@@ -131,6 +131,7 @@ function translateStatic(lang){
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
   let node;
   while(node=walker.nextNode()){
+    if(node.parentElement && ['SCRIPT','STYLE'].includes(node.parentElement.tagName)) continue;
     const raw=node.nodeValue;
     const trimmed=raw.trim();
     if(!trimmed) continue;
