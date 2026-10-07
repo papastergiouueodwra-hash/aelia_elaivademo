@@ -610,3 +610,31 @@ body.room-photo-open{overflow:hidden}
   }
   .room-lightbox-thumb{flex:0 0 120px!important}
 }
+
+/* Native-size room photo viewer — never upscale low-detail source images */
+.room-lightbox-inner{
+  width:min(640px,calc(100vw - 32px))!important;
+}
+.room-lightbox-image{
+  display:block!important;
+  width:640px!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  margin:0 auto!important;
+  image-rendering:auto!important;
+}
+.room-lightbox-thumbs{
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+}
+.room-lightbox-thumb img{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:4/3!important;
+  object-fit:cover!important;
+}
+@media(max-width:700px){
+  .room-lightbox-inner{width:calc(100vw - 24px)!important}
+  .room-lightbox-image{width:100%!important}
+}
