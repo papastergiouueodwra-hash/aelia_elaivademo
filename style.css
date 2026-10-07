@@ -148,29 +148,34 @@ footer{background:var(--cherry-deep)}
   color:#f7f1e5;
 }
 
-/* Booking form inputs — off-white */
+/* Booking form inputs — translucent glass white */
 #bookingModal .booking-modal input,
 #bookingModal .booking-modal select{
-  background:#f7f1e5;
-  border-color:#d8cdbd;
-  color:#5a1f2b;
+  background:rgba(255,255,255,.20);
+  border:1px solid rgba(255,255,255,.45);
+  color:#fffdf8;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
 }
 #bookingModal .booking-modal input::placeholder{
-  color:#8c7d77;
+  color:rgba(255,255,255,.72);
 }
 #bookingModal .booking-modal input:focus,
 #bookingModal .booking-modal select:focus{
-  border-color:#cbbba8;
+  border-color:rgba(255,255,255,.75);
+  background:rgba(255,255,255,.26);
 }
 #bookingModal .payment-demo-block{
-  background:#f3ece1;
-  border-color:#d8cdbd;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.28);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
 }
 #bookingModal .payment-demo-warning{
-  background:#eee5d9;
-  border-color:#d8cdbd;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.24);
 }
 #bookingModal .payment-demo-warning strong,
 #bookingModal .payment-demo-warning span{
-  color:#5a1f2b;
+  color:#fffdf8;
 }
