@@ -123,10 +123,10 @@ el:{
 function translateStatic(lang){
  currentLanguage=lang; document.documentElement.lang=lang;
  const map=T[lang];
+ const source=T[lang==='el'?'en':'el'];
  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
- let node; while(node=walker.nextNode()){const key=node.nodeValue.trim();if(map[key])node.nodeValue=node.nodeValue.replace(key,map[key]);}
- document.querySelectorAll('input[placeholder]').forEach(x=>{const key=x.getAttribute('placeholder');if(map[key])x.placeholder=map[key]});
- document.querySelectorAll('input[type=date]').forEach(x=>{});
+ let node; while(node=walker.nextNode()){const key=node.nodeValue.trim();if(map[key]){node.nodeValue=node.nodeValue.replace(key,map[key]);}else{const reverse=Object.keys(source).find(k=>source[k]===key);if(reverse&&map[reverse])node.nodeValue=node.nodeValue.replace(key,map[reverse]);}}
+ document.querySelectorAll('input[placeholder]').forEach(x=>{const key=x.getAttribute('placeholder');if(map[key])x.placeholder=map[key];else{const reverse=Object.keys(source).find(k=>source[k]===key);if(reverse&&map[reverse])x.placeholder=map[reverse]}});
  document.getElementById('currentLang').textContent=lang==='el'?'GR':'EN';
 }
 function setLanguage(lang){
