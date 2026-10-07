@@ -1,5 +1,58 @@
 const popupInfo={en:{checkin:{eyebrow:'ARRIVAL',title:'Welcome in.',text:'Check-in is available from 15:00. Your access details are shared before arrival. If you need anything along the way, our assistant is here to help.'},wifi:{eyebrow:'STAY CONNECTED',title:'Wi-Fi',text:'Network: AELIA GUEST\\nPassword: aelia2026\\nEnjoy complimentary high-speed Wi-Fi throughout your stay.'},checkout:{eyebrow:'DEPARTURE',title:'Before you leave.',text:'Check-out is by 11:00. Please leave the keys where you found them and make sure all windows and doors are closed.'},house:{eyebrow:'THE HOME',title:'Your house guide.',text:'You will find everything you need here — from appliances and air conditioning to parking, waste collection and simple house guidelines.'}},el:{checkin:{eyebrow:'ΑΦΙΞΗ',title:'Καλώς ήρθατε.',text:'Το check-in είναι διαθέσιμο από τις 15:00. Οι πληροφορίες πρόσβασης αποστέλλονται πριν από την άφιξή σας. Αν χρειαστείτε οτιδήποτε, ο βοηθός μας είναι εδώ για να σας εξυπηρετήσει.'},wifi:{eyebrow:'ΠΑΡΑΜΕΙΝΕΤΕ ΣΥΝΔΕΔΕΜΕΝΟΙ',title:'Wi-Fi',text:'Δίκτυο: AELIA GUEST\\nΚωδικός: aelia2026\\nΑπολαύστε δωρεάν Wi-Fi υψηλής ταχύτητας σε όλη τη διάρκεια της διαμονής σας.'},checkout:{eyebrow:'ΑΝΑΧΩΡΗΣΗ',title:'Πριν φύγετε.',text:'Το check-out γίνεται έως τις 11:00. Παρακαλούμε αφήστε τα κλειδιά εκεί όπου τα βρήκατε και βεβαιωθείτε ότι όλα τα παράθυρα και οι πόρτες είναι κλειστά.'},house:{eyebrow:'ΤΟ ΣΠΙΤΙ',title:'Οδηγός σπιτιού.',text:'Εδώ θα βρείτε όλα όσα χρειάζεστε — από τις συσκευές και τον κλιματισμό μέχρι το πάρκινγκ, την αποκομιδή απορριμμάτων και τις βασικές οδηγίες του σπιτιού.'}},de:{checkin:{eyebrow:'ANKUNFT',title:'Willkommen.',text:'Der Check-in ist ab 15:00 Uhr möglich. Ihre Zugangsinformationen werden vor der Anreise mitgeteilt. Wenn Sie unterwegs etwas benötigen, hilft Ihnen unser Assistent gerne weiter.'},wifi:{eyebrow:'VERBUNDEN BLEIBEN',title:'WLAN',text:'Netzwerk: AELIA GUEST\\nPasswort: aelia2026\\nGenießen Sie während Ihres gesamten Aufenthalts kostenloses Highspeed-WLAN.'},checkout:{eyebrow:'ABREISE',title:'Vor Ihrer Abreise.',text:'Der Check-out ist bis 11:00 Uhr möglich. Bitte legen Sie die Schlüssel zurück, wo Sie sie gefunden haben, und stellen Sie sicher, dass alle Fenster und Türen geschlossen sind.'},house:{eyebrow:'DIE UNTERKUNFT',title:'Hausführer.',text:'Hier finden Sie alles, was Sie brauchen — von Geräten und Klimaanlage bis hin zu Parkplätzen, Müllentsorgung und den wichtigsten Hausregeln.'}}};
 function currentPopupLang(){return localStorage.getItem('aeliaLanguage')||'en'}
+
+const housePopupCopy={
+  en:{
+    'Aelia Olive House':{tag:'01 / SIGNATURE',title:'Aelia Olive House',text:'A calm, sun-filled retreat designed for slow mornings and long evenings. Perfect for couples looking for a private, elegant escape.'},
+    'Casa Verde':{tag:'02 / COASTAL',title:'Casa Verde',text:'A warm coastal home surrounded by greenery, with generous spaces for friends or a small family.'},
+    'The Red Villa':{tag:'03 / PRIVATE',title:'The Red Villa',text:'A characterful villa for longer stays, with a private pool, spacious living areas and room to slow down.'},
+    'Maison Aurelia':{tag:'04 / ESCAPE',title:'Maison Aurelia',text:'An intimate hideaway with a private terrace, soft interiors and everything you need for a peaceful stay.'}
+  },
+  el:{
+    'Aelia Olive House':{tag:'01 / ΥΠΟΓΡΑΦΗ',title:'Aelia Olive House',text:'Ένα ήρεμο, φωτεινό καταφύγιο για χαλαρά πρωινά και όμορφα βράδια. Ιδανικό για ζευγάρια που αναζητούν μια ιδιωτική και κομψή απόδραση.'},
+    'Casa Verde':{tag:'02 / ΠΑΡΑΚΤΙΑ',title:'Casa Verde',text:'Μια ζεστή παραθαλάσσια κατοικία μέσα στο πράσινο, με άνετους χώρους για φίλους ή μια μικρή οικογένεια.'},
+    'The Red Villa':{tag:'03 / ΙΔΙΩΤΙΚΗ',title:'Η Κόκκινη Βίλα',text:'Μια ξεχωριστή βίλα για μεγαλύτερες διαμονές, με ιδιωτική πισίνα, ευρύχωρους χώρους και άνεση για χαλάρωση.'},
+    'Maison Aurelia':{tag:'04 / ΑΠΟΔΡΑΣΗ',title:'Maison Aurelia',text:'Ένα ζεστό καταφύγιο με ιδιωτική βεράντα, ήρεμους εσωτερικούς χώρους και όλα όσα χρειάζεστε για μια όμορφη διαμονή.'}
+  },
+  de:{
+    'Aelia Olive House':{tag:'01 / SIGNATURE',title:'Aelia Olive House',text:'Ein ruhiger, sonniger Rückzugsort für entspannte Morgen und lange Abende. Perfekt für Paare, die eine private, elegante Auszeit suchen.'},
+    'Casa Verde':{tag:'02 / KÜSTE',title:'Casa Verde',text:'Ein warmes Zuhause an der Küste, umgeben von Grün, mit viel Platz für Freunde oder eine kleine Familie.'},
+    'The Red Villa':{tag:'03 / PRIVAT',title:'Die Rote Villa',text:'Eine besondere Villa für längere Aufenthalte mit privatem Pool, großzügigen Wohnbereichen und viel Raum zum Entspannen.'},
+    'Maison Aurelia':{tag:'04 / RÜCKZUG',title:'Maison Aurelia',text:'Ein gemütlicher Rückzugsort mit privater Terrasse und allem, was Sie für einen erholsamen Aufenthalt brauchen.'}
+  }
+};
+
+function openProperty(i){
+  const cards=[...document.querySelectorAll('.house-card')];
+  const card=cards[i];
+  if(!card)return;
+  const img=card.querySelector('img');
+  const originalName=card.querySelector('h3')?.textContent.trim()||'';
+  const lang=currentPopupLang();
+  const d=(housePopupCopy[lang]||housePopupCopy.en)[originalName]||(housePopupCopy.en[originalName]);
+  if(!d)return;
+  const modal=document.getElementById('modal');
+  if(!modal)return;
+  modal.classList.remove('detail-modal');
+  document.getElementById('modalImage').style.display='block';
+  document.getElementById('propertyBook').style.display='block';
+  document.getElementById('modalImage').src=img?.src||'';
+  document.getElementById('modalImage').alt=d.title;
+  document.getElementById('modalEyebrow').textContent=d.tag;
+  document.getElementById('modalTitle').textContent=d.title;
+  document.getElementById('modalText').textContent=d.text;
+  document.getElementById('propertyBook').textContent=lang==='el'?'Κάντε κράτηση →':lang==='de'?'Diese Unterkunft buchen →':'Book this home →';
+  modal.classList.add('show');
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.house-card').forEach((card,i)=>{
+    card.addEventListener('click',e=>{
+      e.preventDefault();
+      openProperty(i);
+    });
+  });
+});
 function openInfo(k){const x=(popupInfo[currentPopupLang()]||popupInfo.en)[k];if(!x)return;const modal=document.getElementById('modal');modal.classList.remove('detail-modal');document.getElementById('modalImage').style.display='none';document.getElementById('propertyBook').style.display='none';document.getElementById('modalEyebrow').textContent=x.eyebrow;document.getElementById('modalTitle').textContent=x.title;document.getElementById('modalText').textContent=x.text;modal.classList.add('show')}function closeModal(e){if(!e||e.target.id==='modal'||e.target.classList.contains('close')){const modal=document.getElementById('modal');modal.classList.remove('show','detail-modal');}}function openChat(){document.getElementById('chat').classList.add('show')}function closeChat(){document.getElementById('chat').classList.remove('show')}function showToast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>x.classList.remove('show'),3000)}function ask(q){if(!q)return;const m=document.querySelector('.messages');m.insertAdjacentHTML('beforeend',`<div class="bubble" style="margin-left:auto;background:#596449;color:#fff">${escapeHtml(q)}</div>`);const a=q.toLowerCase();const lang=localStorage.getItem('aeliaLanguage')||'en';const el=lang==='el';const de=lang==='de';let r=de?'Natürlich! Ich kann Ihnen gerne helfen. In einem echten digitalen Gästeführer kann dieser Assistent mit den Informationen zur Unterkunft und lokalen Empfehlungen verbunden werden.':el?'Φυσικά! Μπορώ να σας βοηθήσω. Σε έναν πραγματικό οδηγό επισκεπτών, ο βοηθός μπορεί να συνδεθεί με τις πληροφορίες του καταλύματος και τις τοπικές προτάσεις.':'Of course! I can help with that. In a real guest guide, this assistant can be connected to the property information and local recommendations.';if(a.includes('eat')||a.includes('φαγη')||a.includes('εστιατ')||a.includes('καφε')||a.includes('essen')||a.includes('restaurant')||a.includes('café'))r=de?'Gerne. Ich kann Ihnen nahegelegene Restaurants, Cafés und lokale Lieblingsorte empfehlen.':'Absolutely. I can recommend nearby restaurants, cafés and local favourites based on what you feel like eating.';if(a.includes('check')||a.includes('αναχωρ')||a.includes('φεύγω')||a.includes('ωρα')||a.includes('abreise')||a.includes('check-out')||a.includes('zeit'))r=de?'Der Check-out ist bis 11:00 Uhr. Wenn Sie etwas mehr Zeit benötigen, kontaktieren Sie bitte Ihren Gastgeber.':el?'Η αναχώρηση είναι έως τις 11:00. Αν χρειάζεστε λίγο περισσότερο χρόνο, παρακαλούμε επικοινωνήστε με τον οικοδεσπότη.':'Check-out is by 11:00. If you need a little extra time, please contact your host.';if(a.includes('do')||a.includes('nearby')||a.includes('τι να')||a.includes('κοντά')||a.includes('δραστηρ')||a.includes('unternehmen')||a.includes('in der nähe')||a.includes('aktiv'))r=de?'In der Umgebung gibt es Strände, Cafés, Restaurants und schöne Orte. Sagen Sie mir, worauf Sie Lust haben, und ich helfe Ihnen weiter.':el?'Υπάρχουν παραλίες, καφέ, εστιατόρια και όμορφα σημεία στην περιοχή. Πείτε μου τι έχετε διάθεση να κάνετε και θα σας καθοδηγήσω.':'There are beaches, cafés, restaurants and local spots nearby. Ask me what you are in the mood for and I will guide you.';setTimeout(()=>{m.insertAdjacentHTML('beforeend',`<div class="bubble bot">${r}</div>`);m.scrollTop=m.scrollHeight},450);document.getElementById('question').value='';m.scrollTop=m.scrollHeight}function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
 
 document.addEventListener('DOMContentLoaded',()=>{
