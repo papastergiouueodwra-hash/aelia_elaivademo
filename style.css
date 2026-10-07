@@ -340,3 +340,113 @@ footer{background:var(--cherry-deep)}
     scroll-snap-align:start;
   }
 }
+
+/* High-resolution room gallery + click-to-open viewer */
+.property-modal{
+  max-width:940px;
+  width:min(940px,calc(100vw - 32px));
+  max-height:calc(100vh - 32px);
+  overflow-y:auto;
+}
+.property-gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  justify-content:stretch;
+}
+.property-gallery figure,
+.property-gallery figure:first-child{
+  width:auto;
+  margin:0;
+  grid-column:auto;
+  overflow:hidden;
+  background:#fbf7ef;
+  border:1px solid rgba(89,100,73,.16);
+}
+.room-photo-button{
+  display:block;
+  width:100%;
+  padding:0;
+  margin:0;
+  border:0;
+  background:none;
+  cursor:zoom-in;
+}
+.property-sprite,
+.room-lightbox-image{
+  background-image:url('assets/property-room-sprite-hq.jpg');
+  background-size:500% 400%;
+  background-repeat:no-repeat;
+  background-position:
+    calc(var(--sprite-col) * 25%)
+    calc(var(--sprite-row) * 33.333333%);
+}
+.property-gallery .property-sprite{
+  width:100%;
+  aspect-ratio:4/3;
+  height:auto;
+  display:block;
+  transition:transform .22s ease;
+}
+.room-photo-button:hover .property-sprite{transform:scale(1.018)}
+.property-gallery figcaption{
+  min-height:38px;
+  box-sizing:border-box;
+  padding:11px 13px;
+  font-size:10px;
+  line-height:1.35;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#5a1f2b;
+  background:#fbf7ef;
+  font-weight:700;
+}
+.room-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(20,24,18,.92);
+}
+.room-lightbox.show{display:flex}
+.room-lightbox-inner{
+  width:min(640px,calc(100vw - 48px));
+}
+.room-lightbox-image{
+  width:100%;
+  aspect-ratio:4/3;
+  background-color:#111;
+  box-shadow:0 24px 70px rgba(0,0,0,.45);
+}
+.room-lightbox-caption{
+  padding:13px 4px 0;
+  text-align:center;
+  color:#fff;
+  font:600 16px 'DM Sans';
+}
+.room-lightbox-close{
+  position:fixed;
+  right:24px;
+  top:18px;
+  z-index:1001;
+  width:44px;
+  height:44px;
+  border:0;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+}
+body.room-photo-open{overflow:hidden}
+@media(max-width:700px){
+  .property-modal{width:calc(100vw - 20px);padding:0}
+  .property-copy{padding:22px 16px!important}
+  .property-gallery{grid-template-columns:1fr;gap:12px}
+  .room-lightbox{padding:14px}
+  .room-lightbox-inner{width:min(640px,calc(100vw - 28px))}
+  .room-lightbox-close{right:12px;top:10px}
+}
