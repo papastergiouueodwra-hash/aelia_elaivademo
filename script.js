@@ -53,7 +53,66 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   });
 });
-function openInfo(k){const x=(popupInfo[currentPopupLang()]||popupInfo.en)[k];if(!x)return;const modal=document.getElementById('modal');modal.classList.remove('detail-modal');document.getElementById('modalImage').style.display='none';document.getElementById('propertyBook').style.display='none';document.getElementById('modalEyebrow').textContent=x.eyebrow;document.getElementById('modalTitle').textContent=x.title;document.getElementById('modalText').textContent=x.text;modal.classList.add('show')}function closeModal(e){if(!e||e.target.id==='modal'||e.target.classList.contains('close')){const modal=document.getElementById('modal');modal.classList.remove('show','detail-modal');}}function openChat(){document.getElementById('chat').classList.add('show')}function closeChat(){document.getElementById('chat').classList.remove('show')}function showToast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>x.classList.remove('show'),3000)}function ask(q){if(!q)return;const m=document.querySelector('.messages');m.insertAdjacentHTML('beforeend',`<div class="bubble" style="margin-left:auto;background:#596449;color:#fff">${escapeHtml(q)}</div>`);const a=q.toLowerCase();const lang=localStorage.getItem('aeliaLanguage')||'en';const el=lang==='el';const de=lang==='de';let r=de?'Natürlich! Ich kann Ihnen gerne helfen. In einem echten digitalen Gästeführer kann dieser Assistent mit den Informationen zur Unterkunft und lokalen Empfehlungen verbunden werden.':el?'Φυσικά! Μπορώ να σας βοηθήσω. Σε έναν πραγματικό οδηγό επισκεπτών, ο βοηθός μπορεί να συνδεθεί με τις πληροφορίες του καταλύματος και τις τοπικές προτάσεις.':'Of course! I can help with that. In a real guest guide, this assistant can be connected to the property information and local recommendations.';if(a.includes('eat')||a.includes('φαγη')||a.includes('εστιατ')||a.includes('καφε')||a.includes('essen')||a.includes('restaurant')||a.includes('café'))r=de?'Gerne. Ich kann Ihnen nahegelegene Restaurants, Cafés und lokale Lieblingsorte empfehlen.':'Absolutely. I can recommend nearby restaurants, cafés and local favourites based on what you feel like eating.';if(a.includes('check')||a.includes('αναχωρ')||a.includes('φεύγω')||a.includes('ωρα')||a.includes('abreise')||a.includes('check-out')||a.includes('zeit'))r=de?'Der Check-out ist bis 11:00 Uhr. Wenn Sie etwas mehr Zeit benötigen, kontaktieren Sie bitte Ihren Gastgeber.':el?'Η αναχώρηση είναι έως τις 11:00. Αν χρειάζεστε λίγο περισσότερο χρόνο, παρακαλούμε επικοινωνήστε με τον οικοδεσπότη.':'Check-out is by 11:00. If you need a little extra time, please contact your host.';if(a.includes('do')||a.includes('nearby')||a.includes('τι να')||a.includes('κοντά')||a.includes('δραστηρ')||a.includes('unternehmen')||a.includes('in der nähe')||a.includes('aktiv'))r=de?'In der Umgebung gibt es Strände, Cafés, Restaurants und schöne Orte. Sagen Sie mir, worauf Sie Lust haben, und ich helfe Ihnen weiter.':el?'Υπάρχουν παραλίες, καφέ, εστιατόρια και όμορφα σημεία στην περιοχή. Πείτε μου τι έχετε διάθεση να κάνετε και θα σας καθοδηγήσω.':'There are beaches, cafés, restaurants and local spots nearby. Ask me what you are in the mood for and I will guide you.';setTimeout(()=>{m.insertAdjacentHTML('beforeend',`<div class="bubble bot">${r}</div>`);m.scrollTop=m.scrollHeight},450);document.getElementById('question').value='';m.scrollTop=m.scrollHeight}function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function openInfo(k){const x=(popupInfo[currentPopupLang()]||popupInfo.en)[k];if(!x)return;const modal=document.getElementById('modal');modal.classList.remove('detail-modal');document.getElementById('modalImage').style.display='none';document.getElementById('propertyBook').style.display='none';document.getElementById('modalEyebrow').textContent=x.eyebrow;document.getElementById('modalTitle').textContent=x.title;document.getElementById('modalText').textContent=x.text;modal.classList.add('show')}function closeModal(e){if(!e||e.target.id==='modal'||e.target.classList.contains('close')){const modal=document.getElementById('modal');modal.classList.remove('show','detail-modal');}}function openChat(){document.getElementById('chat').classList.add('show')}function closeChat(){document.getElementById('chat').classList.remove('show')}function showToast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>x.classList.remove('show'),3000)}const chatCopy={
+  en:{
+    welcome:'Hello! How can I help you during your stay?',
+    suggestions:{food:'Where should I eat?',checkout:'Check-out time',things:'Things to do'},
+    prompts:{food:'Where should I eat nearby?',checkout:'What time is check-out?',things:'What can I do nearby?'},
+    generic:'Of course! I can help with that. In a real guest guide, this assistant can be connected to the property information and local recommendations.',
+    food:'Absolutely. I can recommend nearby restaurants, cafés and local favourites based on what you feel like eating.',
+    checkout:'Check-out is by 11:00. If you need a little extra time, please contact your host.',
+    things:'There are beaches, cafés, restaurants and local spots nearby. Ask me what you are in the mood for and I will guide you.'
+  },
+  el:{
+    welcome:'Γεια σας! Πώς μπορώ να σας βοηθήσω κατά τη διαμονή σας;',
+    suggestions:{food:'Πού να φάω;',checkout:'Ώρα αναχώρησης',things:'Τι μπορώ να κάνω;'},
+    prompts:{food:'Πού μπορώ να φάω κοντά;',checkout:'Τι ώρα είναι η αναχώρηση;',things:'Τι μπορώ να κάνω κοντά;'},
+    generic:'Φυσικά! Μπορώ να σας βοηθήσω με πληροφορίες για το κατάλυμα και τοπικές προτάσεις.',
+    food:'Βεβαίως. Μπορώ να σας προτείνω κοντινά εστιατόρια, καφέ και τοπικές επιλογές ανάλογα με το τι θέλετε να φάτε.',
+    checkout:'Η αναχώρηση είναι έως τις 11:00. Αν χρειάζεστε λίγο περισσότερο χρόνο, παρακαλούμε επικοινωνήστε με τον οικοδεσπότη.',
+    things:'Υπάρχουν παραλίες, καφέ, εστιατόρια και όμορφα σημεία στην περιοχή. Πείτε μου τι έχετε διάθεση να κάνετε και θα σας καθοδηγήσω.'
+  },
+  de:{
+    welcome:'Hallo! Wie kann ich Ihnen während Ihres Aufenthalts helfen?',
+    suggestions:{food:'Wo kann ich essen?',checkout:'Check-out-Zeit',things:'Was kann ich unternehmen?'},
+    prompts:{food:'Wo kann ich in der Nähe essen?',checkout:'Wann ist der Check-out?',things:'Was kann ich in der Nähe unternehmen?'},
+    generic:'Natürlich! Ich kann Ihnen mit Informationen zur Unterkunft und lokalen Empfehlungen helfen.',
+    food:'Gerne. Ich kann Ihnen nahegelegene Restaurants, Cafés und lokale Lieblingsorte empfehlen.',
+    checkout:'Der Check-out ist bis 11:00 Uhr. Wenn Sie etwas mehr Zeit benötigen, kontaktieren Sie bitte Ihren Gastgeber.',
+    things:'In der Umgebung gibt es Strände, Cafés, Restaurants und schöne Orte. Sagen Sie mir, worauf Sie Lust haben, und ich helfe Ihnen weiter.'
+  }
+};
+function updateChatLanguage(){
+  const lang=localStorage.getItem('aeliaLanguage')||'en';
+  const c=chatCopy[lang]||chatCopy.en;
+  const welcome=document.querySelector('.messages .bubble.bot');
+  if(welcome) welcome.textContent=c.welcome;
+  document.querySelectorAll('[data-chat-suggestion]').forEach(b=>{
+    const k=b.dataset.chatSuggestion;
+    if(c.suggestions[k]) b.textContent=c.suggestions[k];
+  });
+}
+function askSuggestion(key){
+  const lang=localStorage.getItem('aeliaLanguage')||'en';
+  const c=chatCopy[lang]||chatCopy.en;
+  ask(c.prompts[key]||'');
+}
+function ask(q){
+  if(!q)return;
+  const m=document.querySelector('.messages');
+  m.insertAdjacentHTML('beforeend',`<div class="bubble" style="margin-left:auto;background:#596449;color:#fff">${escapeHtml(q)}</div>`);
+  const a=q.toLowerCase();
+  const lang=localStorage.getItem('aeliaLanguage')||'en';
+  const c=chatCopy[lang]||chatCopy.en;
+  let r=c.generic;
+  if(a.includes('eat')||a.includes('food')||a.includes('φαγη')||a.includes('εστιατ')||a.includes('καφε')||a.includes('πού μπορώ να φάω')||a.includes('essen')||a.includes('restaurant')||a.includes('café')) r=c.food;
+  else if(a.includes('check')||a.includes('αναχωρ')||a.includes('φεύγω')||a.includes('ώρα')||a.includes('ωρα')||a.includes('abreise')||a.includes('check-out')||a.includes('zeit')) r=c.checkout;
+  else if(a.includes('do')||a.includes('nearby')||a.includes('τι να')||a.includes('κοντά')||a.includes('δραστηρ')||a.includes('unternehmen')||a.includes('in der nähe')||a.includes('aktiv')) r=c.things;
+  setTimeout(()=>{m.insertAdjacentHTML('beforeend',`<div class="bubble bot">${r}</div>`);m.scrollTop=m.scrollHeight},450);
+  document.getElementById('question').value='';
+  m.scrollTop=m.scrollHeight;
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
 
 document.addEventListener('DOMContentLoaded',()=>{
   const demoDetails={
@@ -215,3 +274,5 @@ function submitGuestRequest(e){
   const extra=quantity?(lang==='el'?' Ζητήσατε '+quantity+' επιπλέον πετσέτες.':lang==='de'?' Sie haben '+quantity+' zusätzliche Handtücher angefragt.':' You requested '+quantity+' extra towels.'):'';
   document.getElementById('modalText').innerHTML='<div class="request-success"><span>✓</span><p>'+d.successText+extra+'</p></div>';
 }
+
+document.addEventListener('DOMContentLoaded',updateChatLanguage);
