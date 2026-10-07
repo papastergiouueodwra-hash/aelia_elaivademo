@@ -53,3 +53,7 @@ footer{background:var(--cherry-deep)}
 .card strong{font-size:27px;font-weight:700}.card small{font-size:11px;font-weight:600}
 .essentials h2{font-size:60px;font-weight:700}.essential-list button{font-size:15px;font-weight:700}
 .rules li{font-size:14px;font-weight:600}
+
+/* Language selector: keep it above the hero overlay and always clickable */
+.hero nav{position:relative;z-index:50}
+#currentLang{position:relative;z-index:51;pointer-events:auto}
