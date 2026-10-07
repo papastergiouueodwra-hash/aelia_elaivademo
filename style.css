@@ -87,3 +87,8 @@ footer{background:var(--cherry-deep)}
 .request-success p{margin:0;line-height:1.6}
 
 .guest-request-form select{width:100%;box-sizing:border-box;border:1px solid rgba(90,31,43,.35);background:transparent;color:#5a1f2b;padding:14px 15px;font:inherit;outline:none}.request-quantity-label{text-align:left;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#5a1f2b;margin-top:2px}
+
+.host-call-button{display:block;text-decoration:none;border:1px solid #5a1f2b;background:#5a1f2b;color:#f7eee8;padding:14px 15px;font-weight:800;text-align:center}
+.host-callback-block{display:grid;gap:8px;text-align:left}
+.host-callback-block label{font-size:10px;letter-spacing:.08em;line-height:1.45;font-weight:800;color:#5a1f2b}
+.host-callback-block input{width:100%;box-sizing:border-box;border:1px solid rgba(90,31,43,.35);background:transparent;color:#5a1f2b;padding:14px 15px;font:inherit;outline:none}
