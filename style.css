@@ -41,3 +41,15 @@ footer{background:var(--cherry-deep)}
 .hero h1 em,h2 em{color:#5a1f2b}
 .lang{border-color:#5a1f2b;color:#f8f1df}
 .property-modal .property-copy .eyebrow{color:#5a1f2b}
+
+/* Stronger, larger typography */
+.stay-picker .eyebrow,.welcome .eyebrow,.discover .eyebrow,.essentials .eyebrow,.rules .eyebrow{font-size:12px;font-weight:800;letter-spacing:.2em}
+.stay-picker h2,.welcome h2,.discover h2,.essentials h2,.rules h2{font-weight:700}
+.stay-picker h2{font-size:clamp(52px,8vw,78px)}
+.picker-intro{font-size:15px;font-weight:600;line-height:1.75;max-width:600px}
+.house-card span{font-size:10px;font-weight:800}.house-card h3{font-size:36px;font-weight:700}.house-card p{font-size:13px;font-weight:600}.house-card strong{font-size:12px;font-weight:800}
+.welcome>p:last-child,.place-text p{font-size:15px;font-weight:600}
+.place-text>span{font-size:10px;font-weight:800}.place-text h3{font-size:38px;font-weight:700}.place-text button{font-size:12px;font-weight:800}
+.card strong{font-size:27px;font-weight:700}.card small{font-size:11px;font-weight:600}
+.essentials h2{font-size:60px;font-weight:700}.essential-list button{font-size:15px;font-weight:700}
+.rules li{font-size:14px;font-weight:600}
