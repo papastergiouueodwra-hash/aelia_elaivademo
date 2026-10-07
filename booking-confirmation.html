@@ -31,7 +31,7 @@ button{margin-top:24px;border:0;background:#5a1f2b;color:#fff;padding:14px 20px;
   <div class="row"><span id="propertyLabel">Property</span><strong id="property"></strong></div>
   <div class="row"><span id="datesLabel">Dates</span><strong id="dates"></strong></div>
   <div class="row"><span id="guestsLabel">Guests</span><strong id="guests"></strong></div>
-  <div class="row"><span id="nameLabel">Name</span><strong id="name"></strong></div>
+  <div class="row"><span id="nameLabel">Name</span><strong id="bookingNameValue"></strong></div>
   <div class="row"><span id="phoneLabel">Phone</span><strong id="phone"></strong></div>
 </div>
 <p class="note" id="note">Demo only — no real payment has been processed and no card details are stored.</p>
@@ -53,7 +53,7 @@ if(c){
 property.textContent=b.property||'—';
 dates.textContent=(b.checkin||'—')+' → '+(b.checkout||'—');
 guests.textContent=b.guests||'—';
-name.textContent=b.name||'—';
+document.getElementById('bookingNameValue').textContent=b.name||'—';
 phone.textContent=b.phone||'—';
 </script>
 </body>
