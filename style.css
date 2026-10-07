@@ -62,3 +62,12 @@ footer{background:var(--cherry-deep)}
 /* Essentials: compact layout, with no image/placeholder space above the links */
 .essentials{padding-top:45px}
 .essentials h2{margin-bottom:18px}
+
+
+/* Text-only Essentials popups: no empty image area, premium editorial typography */
+.modal.detail-modal .property-modal{max-width:620px}
+.modal.detail-modal .property-copy{padding:46px 44px 48px}
+.modal.detail-modal #modalText{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;font-weight:600;line-height:1.55;color:#5a1f2b;white-space:normal;margin:8px 0 0}
+.modal.detail-modal #modalTitle{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:#5a1f2b;margin-bottom:8px}
+.modal.detail-modal #modalEyebrow{font-size:10px;letter-spacing:.22em;font-weight:800;color:#5a1f2b}
+@media(max-width:760px){.modal.detail-modal .property-copy{padding:36px 26px 38px}.modal.detail-modal #modalTitle{font-size:43px}.modal.detail-modal #modalText{font-size:21px;line-height:1.5}}
