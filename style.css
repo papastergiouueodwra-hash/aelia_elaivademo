@@ -92,3 +92,8 @@ footer{background:var(--cherry-deep)}
 .host-callback-block{display:grid;gap:8px;text-align:left}
 .host-callback-block label{font-size:10px;letter-spacing:.08em;line-height:1.45;font-weight:800;color:#5a1f2b}
 .host-callback-block input{width:100%;box-sizing:border-box;border:1px solid rgba(90,31,43,.35);background:transparent;color:#5a1f2b;padding:14px 15px;font:inherit;outline:none}
+
+.payment-demo-block{display:grid;gap:14px;padding:16px;border:1px solid rgba(90,31,43,.22);background:rgba(255,255,255,.18)}
+.payment-demo-warning{padding:12px 14px;border:1px solid rgba(90,31,43,.35);background:rgba(90,31,43,.08);display:grid;gap:5px}
+.payment-demo-warning strong{font-size:10px;letter-spacing:.16em;color:#5a1f2b}
+.payment-demo-warning span{font-size:11px;line-height:1.5;color:#5a1f2b;font-weight:600}
