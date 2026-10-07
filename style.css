@@ -147,3 +147,30 @@ footer{background:var(--cherry-deep)}
 #bookingModal .booking-success p{
   color:#f7f1e5;
 }
+
+/* Booking form inputs — dark cherry red */
+#bookingModal .booking-modal input,
+#bookingModal .booking-modal select{
+  background:#5a1f2b;
+  border-color:#45151f;
+  color:#f7eee8;
+}
+#bookingModal .booking-modal input::placeholder{
+  color:#eadbd8;
+}
+#bookingModal .booking-modal input:focus,
+#bookingModal .booking-modal select:focus{
+  border-color:#7a2b3a;
+}
+#bookingModal .payment-demo-block{
+  background:#5a1f2b;
+  border-color:#45151f;
+}
+#bookingModal .payment-demo-warning{
+  background:#45151f;
+  border-color:#7a2b3a;
+}
+#bookingModal .payment-demo-warning strong,
+#bookingModal .payment-demo-warning span{
+  color:#f7eee8;
+}
