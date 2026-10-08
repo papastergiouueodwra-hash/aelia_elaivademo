@@ -1296,3 +1296,6 @@ body.discover-photo-open{overflow:hidden}
       url('assets/aelia-hero-desktop.jpg?v=20261008-5') center 20% / cover no-repeat;
   }
 }
+
+/* Hero title: make Aelia Suites white on desktop and mobile. */
+.hero h1 em{color:#ffffff}
