@@ -656,3 +656,157 @@ body.room-photo-open{overflow:hidden}
   transform:none!important;
 }
 .room-lightbox{display:none!important}
+
+/* Clickable property photos + all-photos viewer */
+.property-view-all{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:8px 0 22px;
+  padding:11px 16px;
+  border:1px solid #596449;
+  background:transparent;
+  color:#596449;
+  font:700 11px/1 'DM Sans';
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.property-view-all:hover{background:#596449;color:#fff}
+.room-photo-button{
+  display:block!important;
+  width:100%!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  background:none!important;
+  cursor:zoom-in!important;
+  overflow:hidden!important;
+}
+.property-gallery .room-grid-photo{
+  display:block!important;
+  width:100%!important;
+  aspect-ratio:4/3!important;
+  height:auto!important;
+  object-fit:cover!important;
+  transform:none!important;
+  transition:transform .2s ease!important;
+}
+.room-photo-button:hover .room-grid-photo{transform:scale(1.015)!important}
+.room-lightbox{
+  position:fixed!important;
+  inset:0!important;
+  z-index:2000!important;
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:24px!important;
+  background:rgba(18,22,17,.94)!important;
+}
+.room-lightbox.show{display:flex!important}
+.room-lightbox-inner{
+  width:min(980px,calc(100vw - 120px))!important;
+  max-height:calc(100vh - 48px)!important;
+  overflow:auto!important;
+}
+.room-lightbox-image{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-height:70vh!important;
+  object-fit:contain!important;
+  margin:0 auto!important;
+  background:#111!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.38)!important;
+}
+.room-lightbox-caption{
+  padding:12px 0 10px!important;
+  text-align:center!important;
+  color:#fff!important;
+  font:600 16px/1.3 'DM Sans'!important;
+}
+.room-lightbox-thumbs{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:10px!important;
+  margin-top:8px!important;
+}
+.room-lightbox-thumb{
+  display:grid!important;
+  gap:6px!important;
+  min-width:0!important;
+  padding:5px!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  background:rgba(255,255,255,.06)!important;
+  color:#fff!important;
+  cursor:pointer!important;
+  opacity:.75!important;
+}
+.room-lightbox-thumb:hover,
+.room-lightbox-thumb.active{
+  opacity:1!important;
+  border-color:#fff!important;
+  background:rgba(255,255,255,.14)!important;
+}
+.room-lightbox-thumb img{
+  display:block!important;
+  width:100%!important;
+  aspect-ratio:4/3!important;
+  height:auto!important;
+  object-fit:cover!important;
+}
+.room-lightbox-thumb small{
+  display:block!important;
+  font:600 9px/1.2 'DM Sans'!important;
+  letter-spacing:.05em!important;
+  text-transform:uppercase!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.room-lightbox-close{
+  position:fixed!important;
+  right:22px!important;
+  top:16px!important;
+  z-index:2002!important;
+  width:46px!important;
+  height:46px!important;
+  border:1px solid rgba(255,255,255,.3)!important;
+  background:rgba(255,255,255,.1)!important;
+  color:#fff!important;
+  font-size:30px!important;
+  line-height:1!important;
+  cursor:pointer!important;
+}
+.room-lightbox-nav{
+  position:fixed!important;
+  top:50%!important;
+  z-index:2002!important;
+  width:50px!important;
+  height:64px!important;
+  transform:translateY(-50%)!important;
+  border:1px solid rgba(255,255,255,.25)!important;
+  background:rgba(255,255,255,.08)!important;
+  color:#fff!important;
+  font-size:40px!important;
+  line-height:1!important;
+  cursor:pointer!important;
+}
+.room-lightbox-prev{left:18px!important}
+.room-lightbox-next{right:18px!important}
+body.room-photo-open{overflow:hidden!important}
+@media(max-width:700px){
+  .property-view-all{width:100%;box-sizing:border-box}
+  .room-lightbox{align-items:flex-start!important;padding:12px!important;overflow:auto!important}
+  .room-lightbox-inner{width:100%!important;max-height:none!important;margin-top:52px!important}
+  .room-lightbox-image{max-height:58vh!important}
+  .room-lightbox-thumbs{
+    display:flex!important;
+    overflow-x:auto!important;
+    gap:8px!important;
+    padding-bottom:8px!important;
+  }
+  .room-lightbox-thumb{flex:0 0 115px!important}
+  .room-lightbox-nav{display:none!important}
+  .room-lightbox-close{right:10px!important;top:8px!important}
+}
