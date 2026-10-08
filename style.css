@@ -1262,5 +1262,25 @@ body.discover-photo-open{overflow:hidden}
   display:none!important;
 }
 
-/* Responsive hero photo: same composition, portrait crop for phones. */
-@media(max-width:760px){.hero{background-image:linear-gradient(180deg,rgba(37,43,31,.2),rgba(37,43,31,.72)),url('assets/aelia-hero-mobile.jpg?v=20261008-5');background-position:center center}}
+/* On phones show the whole desktop photograph at its natural aspect ratio, without cropping. */
+@media(max-width:760px){
+  .hero{
+    background:#231b1a;
+    min-height:88vh;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:86px;
+    left:0;
+    width:100%;
+    aspect-ratio:1536 / 668;
+    background:url('assets/aelia-hero-desktop.jpg?v=20261008-5') center center / contain no-repeat;
+    z-index:0;
+  }
+  .hero-copy{
+    padding-top:calc(43.5vw + 35px);
+    padding-bottom:100px;
+  }
+}
