@@ -281,6 +281,8 @@ function openProperty(i){
     document.getElementById('propertyViewAll').style.display='none';
     gallery.innerHTML='';
   }
+  const propertyTour=document.querySelector('#modal .property-tour');
+  if(propertyTour) propertyTour.style.display='block';
   document.getElementById('propertyTourTitle').textContent=copy.tour;
   document.getElementById('propertyDetails').innerHTML=p.details.map(([label,value])=>'<div><small>'+copy.labels[label]+'</small><b>'+((copy.values&&copy.values[value])||value)+'</b></div>').join('');
   document.getElementById('propertyBook').textContent=copy.book;
