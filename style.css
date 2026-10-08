@@ -1098,3 +1098,11 @@ body.room-photo-open{overflow:hidden!important}
 .discover .places .place-text button b{
   color:#5a1f2b!important;
 }
+
+/* Property gallery reveal fix */
+#modal .property-gallery-wrap{
+  display:none!important;
+}
+#modal .property-gallery-wrap.is-open{
+  display:block!important;
+}
