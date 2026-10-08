@@ -172,30 +172,34 @@ document.addEventListener('DOMContentLoaded',()=>{
     modal.classList.add('detail-modal');
     document.getElementById('modalImage').style.display='none';
     document.getElementById('propertyBook').style.display='none';
+    const viewAll=document.getElementById('propertyViewAll');
+    const galleryWrap=document.getElementById('propertyGalleryWrap');
+    const tour=document.querySelector('#modal .property-tour');
+    if(viewAll) viewAll.style.display='none';
+    if(galleryWrap){ galleryWrap.classList.remove('is-open'); galleryWrap.style.display='none'; }
+    if(tour) tour.style.display='none';
     document.getElementById('modalEyebrow').textContent=d.eyebrow;
     document.getElementById('modalTitle').textContent=d.title;
     document.getElementById('modalText').textContent=d.text;
     modal.classList.add('show');
   }
 
-  // Turn the area and essentials links into real demo interactions instead of placeholder toasts.
-  const replacements=[
-    {selector:'.place-text button',keys:['beaches','food']},
-    {selector:'.essential-list button',keys:['parking','transport','pharmacy','emergency']}
-  ];
-  replacements.forEach(group=>{
-    document.querySelectorAll(group.selector).forEach((button,i)=>{
-      const key=group.keys[i];
-      if(key) button.onclick=()=>openDemoDetail(key);
-    });
+  // Essentials still open their information modal.
+  document.querySelectorAll('.essential-list button').forEach((button,i)=>{
+    const keys=['parking','transport','pharmacy','emergency'];
+    const key=keys[i];
+    if(key) button.onclick=()=>openDemoDetail(key);
   });
 
-  // Make the whole place card feel tappable on mobile, while keeping the Explore action.
+  // Discover cards always open their own photo galleries, never the property modal.
   document.querySelectorAll('.places article').forEach((card,i)=>{
+    const type=i===0?'beach':'food';
     card.style.cursor='pointer';
+    const explore=card.querySelector('.place-text button');
+    if(explore) explore.onclick=e=>{e.stopPropagation();openDiscoverGallery(type,0);};
     card.addEventListener('click',e=>{
-      if(e.target.closest('button'))return;
-      openDemoDetail(i===0?'beaches':'food');
+      if(e.target.closest('button')) return;
+      openDiscoverGallery(type,0);
     });
   });
 });
