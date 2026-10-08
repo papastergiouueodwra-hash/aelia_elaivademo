@@ -1106,3 +1106,147 @@ body.room-photo-open{overflow:hidden!important}
 #modal .property-gallery-wrap.is-open{
   display:block!important;
 }
+
+/* Discover-specific photo viewer — separate from property gallery */
+.temporary-beach-gallery button,
+.temporary-food-gallery button{
+  display:block;
+  width:100%;
+  padding:0;
+  margin:0;
+  border:0;
+  background:none;
+  cursor:zoom-in;
+}
+.temporary-beach-gallery button img,
+.temporary-food-gallery button img{
+  width:100%;
+  height:280px;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+}
+.discover-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:3500;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  background:rgba(18,22,17,.95);
+}
+.discover-lightbox.show{display:flex}
+.discover-lightbox-inner{
+  width:min(900px,calc(100vw - 120px));
+  max-height:calc(100vh - 44px);
+  overflow:auto;
+  text-align:center;
+}
+.discover-lightbox-image{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:72vh;
+  object-fit:contain;
+  margin:0 auto;
+  background:#111;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.discover-lightbox-caption{
+  padding:12px 0 10px;
+  color:#fff;
+  font:600 15px/1.3 'DM Sans';
+}
+.discover-lightbox-thumbs{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:8px;
+}
+.discover-lightbox-thumb{
+  display:grid;
+  gap:5px;
+  min-width:0;
+  padding:5px;
+  border:1px solid rgba(255,255,255,.24);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  cursor:pointer;
+  opacity:.76;
+}
+.discover-lightbox-thumb:hover,
+.discover-lightbox-thumb.active{
+  opacity:1;
+  border-color:#fff;
+  background:rgba(255,255,255,.14);
+}
+.discover-lightbox-thumb img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/3;
+  height:auto;
+  object-fit:cover;
+}
+.discover-lightbox-thumb small{
+  display:block;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font:600 9px/1.2 'DM Sans';
+  text-transform:uppercase;
+}
+.discover-lightbox-close{
+  position:fixed;
+  right:18px;
+  top:14px;
+  z-index:3502;
+  width:46px;
+  height:46px;
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  font-size:30px;
+  cursor:pointer;
+}
+.discover-lightbox-nav{
+  position:fixed;
+  top:50%;
+  z-index:3502;
+  width:50px;
+  height:64px;
+  transform:translateY(-50%);
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:40px;
+  cursor:pointer;
+}
+.discover-lightbox-prev{left:16px}
+.discover-lightbox-next{right:16px}
+body.discover-photo-open{overflow:hidden}
+@media(max-width:700px){
+  .temporary-beach-gallery button img,
+  .temporary-food-gallery button img{height:240px}
+  .discover-lightbox{
+    align-items:flex-start;
+    overflow:auto;
+    padding:10px;
+  }
+  .discover-lightbox-inner{
+    width:100%;
+    max-height:none;
+    margin-top:52px;
+  }
+  .discover-lightbox-image{max-height:58vh}
+  .discover-lightbox-thumbs{
+    display:flex;
+    overflow-x:auto;
+    gap:8px;
+    padding-bottom:8px;
+  }
+  .discover-lightbox-thumb{flex:0 0 150px}
+  .discover-lightbox-nav{display:none}
+  .discover-lightbox-close{right:9px;top:7px}
+}
