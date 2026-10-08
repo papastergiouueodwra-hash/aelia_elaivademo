@@ -1088,3 +1088,13 @@ body.room-photo-open{overflow:hidden!important}
   .temporary-food-gallery{grid-template-columns:1fr}
   .temporary-food-gallery img{height:240px}
 }
+
+/* Discover cards text — dark cherry below photos only */
+.discover .places .place-text,
+.discover .places .place-text > span,
+.discover .places .place-text h3,
+.discover .places .place-text p,
+.discover .places .place-text button,
+.discover .places .place-text button b{
+  color:#5a1f2b!important;
+}
