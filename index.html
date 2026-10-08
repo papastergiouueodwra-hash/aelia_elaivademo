@@ -73,8 +73,8 @@
 <section class="discover section">
   <div class="section-heading"><p class="eyebrow olive">DISCOVER THE AREA</p><h2>Make the most of<br><em>your surroundings.</em></h2></div>
   <div class="places">
-    <article><div class="temporary-beach-gallery"><img src="assets/beach-tables.jpg" alt="Seafront tables by the water"><img src="assets/beach-sea.jpg" alt="Beach and clear blue sea"></div><div class="place-text"><span>01 / OUTDOORS</span><h3>Beaches & sunsets</h3><p>Our favourite spots for a slow afternoon by the sea.</p><button onclick="showToast('Beach recommendations coming right up.')">Explore <b>→</b></button></div></article>
-    <article><div class="temporary-food-gallery"><img src="https://images.unsplash.com/photo-1647952390988-14776f4662f5?fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Greek food and wine on a table"><img src="https://images.unsplash.com/photo-1568044401410-a95b08960705?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Greek wine with sea view"></div><div class="place-text"><span>02 / LOCAL FLAVOURS</span><h3>Eat & drink</h3><p>Hand-picked restaurants, cafés and places worth visiting.</p><button onclick="showToast('Local favourites are just a tap away.')">Explore <b>→</b></button></div></article>
+    <article><div class="temporary-beach-gallery"><button type="button" onclick="openDiscoverGallery('beach',0)"><img src="assets/beach-tables.jpg" alt="Seafront tables by the water"></button><button type="button" onclick="openDiscoverGallery('beach',1)"><img src="assets/beach-sea.jpg" alt="Beach and clear blue sea"></button></div><div class="place-text"><span>01 / OUTDOORS</span><h3>Beaches & sunsets</h3><p>Our favourite spots for a slow afternoon by the sea.</p><button onclick="openDiscoverGallery('beach',0)">Explore <b>→</b></button></div></article>
+    <article><div class="temporary-food-gallery"><button type="button" onclick="openDiscoverGallery('food',0)"><img src="https://images.unsplash.com/photo-1647952390988-14776f4662f5?fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Greek food and wine on a table"></button><button type="button" onclick="openDiscoverGallery('food',1)"><img src="https://images.unsplash.com/photo-1568044401410-a95b08960705?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800" alt="Greek wine with sea view"></button></div><div class="place-text"><span>02 / LOCAL FLAVOURS</span><h3>Eat & drink</h3><p>Hand-picked restaurants, cafés and places worth visiting.</p><button onclick="openDiscoverGallery('food',0)">Explore <b>→</b></button></div></article>
   </div>
 </section>
 
@@ -113,6 +113,7 @@
 <footer><div class="brand">AELIA <small>SUITES</small></div><p>We hope you enjoy every moment.</p><span>Powered by ELåiVA</span></footer>
 
 <div class="modal" id="modal" onclick="closeModal(event)"><div class="modal-box property-modal"><button class="close" onclick="closeModal()">×</button><img id="modalImage" class="property-image" src="" alt=""><div class="property-copy"><p class="eyebrow olive" id="modalEyebrow"></p><h2 id="modalTitle"></h2><p id="modalText"></p><button class="property-view-all" id="propertyViewAll" type="button" onclick="scrollToPropertyPhotos()">View all photos ↓</button><div class="property-gallery-wrap" id="propertyGalleryWrap"><p class="property-gallery-title" id="propertyGalleryTitle">Inside the home</p><div class="property-gallery" id="propertyGallery"></div></div><div class="property-tour"><p class="property-tour-title" id="propertyTourTitle">Explore the home</p><div class="property-details" id="propertyDetails"></div></div><button class="gold-btn property-book" id="propertyBook" onclick="openBooking()">Book this home <span>→</span></button></div></div></div>
+<div class="discover-lightbox" id="discoverLightbox" onclick="closeDiscoverGallery(event)"><button class="discover-lightbox-close" type="button" onclick="closeDiscoverGallery()">×</button><button class="discover-lightbox-nav discover-lightbox-prev" type="button" onclick="event.stopPropagation();stepDiscoverGallery(-1)">‹</button><div class="discover-lightbox-inner"><img id="discoverLightboxImage" class="discover-lightbox-image" src="" alt=""><div id="discoverLightboxCaption" class="discover-lightbox-caption"></div><div id="discoverLightboxThumbs" class="discover-lightbox-thumbs"></div></div><button class="discover-lightbox-nav discover-lightbox-next" type="button" onclick="event.stopPropagation();stepDiscoverGallery(1)">›</button></div>
 <div class="room-lightbox" id="roomLightbox" onclick="closeRoomPhoto(event)"><button class="room-lightbox-close" type="button" onclick="closeRoomPhoto()">×</button><button class="room-lightbox-nav room-lightbox-prev" type="button" onclick="event.stopPropagation();stepRoomPhoto(-1)">‹</button><div class="room-lightbox-inner"><img class="room-lightbox-image" id="roomLightboxImage" src="" alt=""><div class="room-lightbox-caption" id="roomLightboxCaption"></div><div class="room-lightbox-thumbs" id="roomLightboxThumbs"></div></div><button class="room-lightbox-nav room-lightbox-next" type="button" onclick="event.stopPropagation();stepRoomPhoto(1)">›</button></div>
 <div class="modal" id="bookingModal" onclick="closeBooking(event)"><div class="modal-box booking-modal"><button class="close" onclick="closeBooking()">×</button><div id="bookingContent"><p class="eyebrow olive">BOOK YOUR STAY</p><h2 id="bookingTitle"></h2><p class="booking-subtitle" id="bookingSubtitle"></p><form class="booking-form" onsubmit="submitBooking(event)"><div class="booking-row"><div class="field"><label>Check-in</label><input id="bookingCheckin" type="date" required></div><div class="field"><label>Check-out</label><input id="bookingCheckout" type="date" required></div></div><div class="field"><label id="bookingNameLabel">Full name</label><input id="bookingName" type="text" placeholder="Your full name" required></div><div class="field"><label>Phone</label><input id="bookingPhone" type="tel" placeholder="+30 ..." required></div><div class="field"><label>Number of guests</label><select id="guestCount" required></select></div><div class="payment-demo-block"><div class="payment-demo-warning"><strong>DEMO PAYMENT</strong><span>Do not enter real card details. This is a demonstration only and no payment will be processed.</span></div><div class="field"><label>Cardholder name</label><input id="bookingCardholder" type="text" autocomplete="off" placeholder="Cardholder name" required></div><div class="field"><label>Card number</label><input id="bookingPayment" type="text" inputmode="numeric" autocomplete="off" maxlength="19" placeholder="0000 0000 0000 0000" required></div><div class="booking-row"><div class="field"><label>Expiry date</label><input id="bookingExpiry" type="text" inputmode="numeric" autocomplete="off" maxlength="5" placeholder="MM/YY" required></div><div class="field"><label>CVV</label><input id="bookingCvv" type="password" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="123" required></div></div></div><p class="booking-note">Demo booking only — no real payment will be processed.</p><button class="gold-btn" type="submit">Confirm & pay <span>→</span></button></form></div><div class="booking-success" id="bookingSuccess"><div class="assistant-mark">✦</div><h3>Booking request received.</h3><p>Thank you. Your stay request has been submitted successfully.</p><button class="gold-btn" onclick="closeBooking()">Done</button></div></div></div>
 
@@ -182,6 +183,61 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(saved && T[saved]) translateStatic(saved);
 });</script>
 <script>
+const discoverGalleryData={
+  beach:[
+    {src:'assets/beach-tables.jpg',labels:{en:'Seafront tables by the water',el:'Παραθαλάσσιο σημείο δίπλα στο νερό',de:'Tische direkt am Meer'}},
+    {src:'assets/beach-sea.jpg',labels:{en:'Beach and clear blue sea',el:'Παραλία με καθαρά γαλάζια νερά',de:'Strand mit klarem blauem Meer'}}
+  ],
+  food:[
+    {src:'https://images.unsplash.com/photo-1647952390988-14776f4662f5?fm=jpg&ixlib=rb-4.1.0&q=82&w=1800',labels:{en:'Greek food and wine',el:'Ελληνικό φαγητό και κρασί',de:'Griechisches Essen und Wein'}},
+    {src:'https://images.unsplash.com/photo-1568044401410-a95b08960705?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=82&w=1800',labels:{en:'Wine with a sea view',el:'Κρασί με θέα στη θάλασσα',de:'Wein mit Meerblick'}}
+  ]
+};
+let currentDiscoverGallery='beach';
+let currentDiscoverIndex=0;
+function openDiscoverGallery(type,index=0){
+  if(!discoverGalleryData[type]?.length) return;
+  currentDiscoverGallery=type;
+  currentDiscoverIndex=index;
+  renderDiscoverGallery();
+  document.getElementById('discoverLightbox').classList.add('show');
+  document.body.classList.add('discover-photo-open');
+}
+function renderDiscoverGallery(){
+  const items=discoverGalleryData[currentDiscoverGallery]||[];
+  if(!items.length) return;
+  currentDiscoverIndex=(currentDiscoverIndex+items.length)%items.length;
+  const item=items[currentDiscoverIndex];
+  const lang=currentPopupLang();
+  const label=item.labels[lang]||item.labels.en;
+  const image=document.getElementById('discoverLightboxImage');
+  image.src=item.src;
+  image.alt=label;
+  document.getElementById('discoverLightboxCaption').textContent=label;
+  document.getElementById('discoverLightboxThumbs').innerHTML=items.map((x,i)=>{
+    const thumbLabel=x.labels[lang]||x.labels.en;
+    return '<button type="button" class="discover-lightbox-thumb'+(i===currentDiscoverIndex?' active':'')+'" onclick="event.stopPropagation();currentDiscoverIndex='+i+';renderDiscoverGallery()"><img src="'+x.src+'" alt="'+thumbLabel+'"><small>'+thumbLabel+'</small></button>';
+  }).join('');
+}
+function stepDiscoverGallery(direction){
+  const items=discoverGalleryData[currentDiscoverGallery]||[];
+  if(!items.length) return;
+  currentDiscoverIndex=(currentDiscoverIndex+direction+items.length)%items.length;
+  renderDiscoverGallery();
+}
+function closeDiscoverGallery(e){
+  if(e && e.target!==document.getElementById('discoverLightbox')) return;
+  const box=document.getElementById('discoverLightbox');
+  if(box) box.classList.remove('show');
+  document.body.classList.remove('discover-photo-open');
+}
+document.addEventListener('keydown',e=>{
+  const viewer=document.getElementById('discoverLightbox');
+  if(!viewer?.classList.contains('show')) return;
+  if(e.key==='Escape') closeDiscoverGallery();
+  if(e.key==='ArrowLeft') stepDiscoverGallery(-1);
+  if(e.key==='ArrowRight') stepDiscoverGallery(1);
+});
 const properties=[
 {image:'airbnb.jpg',name:'Aelia Olive House',tag:'01 / SIGNATURE',text:'A calm, sun-filled retreat designed for slow mornings and long evenings. Perfect for couples looking for a private, elegant escape.',details:[['Guests','2'],['Bedrooms','1'],['Bathrooms','1'],['View','Sea view'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Private terrace']],gallery:[['Living room','assets/aelia-living.jpg'],['Kitchen','assets/aelia-kitchen.jpg'],['Bedroom','assets/aelia-bedroom.jpg'],['Bathroom','assets/aelia-bathroom.jpg'],['Veranda','assets/aelia-veranda.jpg']]},
 {image:'airbnb1.jpg',name:'Casa Verde',tag:'02 / COASTAL',text:'A warm coastal home surrounded by greenery, with generous spaces for friends or a small family.',details:[['Guests','4'],['Bedrooms','2'],['Bathrooms','2'],['View','Garden'],['Amenities','Wi-Fi · AC · Kitchen'],['Outdoor','Garden & dining']],gallery:[['Living room','assets/casa-living-hq.jpg'],['Kitchen','assets/casa-kitchen-hq.jpg'],['Bedroom','assets/casa-bedroom-hq.jpg'],['Bathroom','assets/casa-bathroom-hq.jpg'],['Garden','assets/casa-garden-hq.jpg']]},
