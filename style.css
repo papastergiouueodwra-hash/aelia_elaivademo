@@ -1353,3 +1353,19 @@ body.discover-photo-open{overflow:hidden}
   .hero .hero-side-content {padding-top:clamp(77px, 8vw, 95px)}
   .hero .hero-side-content .demo-actions a {font-size:10px}
 }
+
+/* Align all desktop hero text and links close above the EXPLORE cue. */
+@media (min-width: 761px) {
+  .hero .hero-copy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 76px;
+    width: 100%;
+    padding: 0 5%;
+    align-items: end;
+  }
+  .hero .hero-side-content {
+    padding-top: 0;
+  }
+}
