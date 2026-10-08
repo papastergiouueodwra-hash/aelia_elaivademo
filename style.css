@@ -1285,15 +1285,19 @@ body.discover-photo-open{overflow:hidden}
   }
 }
 
-/* Smaller hero photograph on desktop; the mobile full-photo layout stays unchanged. */
+/* Compact desktop hero: genuinely shorter image area, not just repositioned crop. */
 @media (min-width: 761px) {
   .hero {
-    min-height: 72vh;
+    height: clamp(480px, 54vh, 620px);
+    min-height: 0;
     position: relative;
     color: #f7f1e5;
     background:
       linear-gradient(180deg, rgba(37,43,31,.2), rgba(37,43,31,.72)),
       url('assets/aelia-hero-desktop.jpg?v=20261008-5') center 14% / cover no-repeat;
+  }
+  .hero-copy {
+    padding-top: clamp(12px, 2.5vh, 30px);
   }
 }
 
