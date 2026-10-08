@@ -110,6 +110,10 @@ html{scroll-padding-top:24px}
 }
 @media(max-width:370px){.demo-quick-facts strong{font-size:23px}.demo-quick-facts article{gap:6px}}
 @media(prefers-reduced-motion:reduce){.demo-actions a{transition:none}}
+</style><style id="restored-guest-facts-placement">
+/* Keep the original stay overview lower on the page; no floating strip under the hero. */
+.demo-quick-facts-restored{margin:26px auto 6px;max-width:1020px;box-shadow:none}
+@media(max-width:900px){.demo-quick-facts-restored{margin:24px 0 5px}}
 </style></head>
 <body><div class="language-modal" id="languageModal"><div class="language-box"><p class="eyebrow">WELCOME / ΚΑΛΩΣ ΗΡΘΑΤΕ</p><h2>Choose your language</h2><p>Select your preferred language to continue.</p><div class="language-options"><button onclick="setLanguage('en')">English</button><button onclick="setLanguage('el')">Ελληνικά</button><button onclick="setLanguage('de')">Deutsch</button></div></div></div>
 <header class="hero">
@@ -190,7 +194,14 @@ html{scroll-padding-top:24px}
   <div><p class="eyebrow olive">A COMFORTABLE STAY FOR EVERYONE</p><h2>House rules</h2></div>
   <ul><li><span>01</span>Please keep noise to a minimum after 11 PM.</li><li><span>02</span>No smoking inside the property.</li><li><span>03</span>Please treat the home with care.</li><li><span>04</span>Let us know if anything needs attention.</li></ul>
 </section>
-<section class="guest-overview section"><div class="section-heading"><p class="eyebrow olive">YOUR STAY</p><h2>A few things<br><em>to know.</em></h2></div><div class="stay-overview-grid"><div><span>CHECK-IN</span><strong>15:00</strong><small>From</small></div><div><span>CHECK-OUT</span><strong>11:00</strong><small>Until</small></div><div><span>GUESTS</span><strong>2</strong><small>Maximum</small></div><div><span>WI-FI</span><strong>AELIA GUEST</strong><small>Complimentary</small></div></div></section>
+<section class="guest-overview section"><div class="section-heading"><p class="eyebrow olive">YOUR STAY</p><h2>A few things<br><em>to know.</em></h2></div><div class="stay-overview-grid"><div><span>CHECK-IN</span><strong>15:00</strong><small>From</small></div><div><span>CHECK-OUT</span><strong>11:00</strong><small>Until</small></div><div><span>GUESTS</span><strong>2</strong><small>Maximum</small></div><div><span>WI-FI</span><strong>AELIA GUEST</strong><small>Complimentary</small></div></div>
+<section class="demo-quick-facts demo-quick-facts-restored" aria-label="Aelia Suites stay overview">
+  <article><strong>04</strong><div><span>CURATED HOMES</span><small>Find your ideal stay</small></div></article>
+  <article><strong>15:00</strong><div><span>ARRIVAL</span><small>Check-in from 15:00</small></div></article>
+  <article><strong>11:00</strong><div><span>DEPARTURE</span><small>Check-out by 11:00</small></div></article>
+  <article><strong>24/7</strong><div><span>DIGITAL GUIDE</span><small>Useful information anytime</small></div></article>
+</section>
+</section>
 <section class="arrival section" id="arrival-details"><div class="section-heading"><p class="eyebrow olive">BEFORE YOU ARRIVE</p><h2>Arrive<br><em>with ease.</em></h2></div><div class="arrival-grid"><button onclick="openGuestExtra('location')"><span>⌖</span><div><strong>Location</strong><small>Find the property</small></div><b>→</b></button><button onclick="openGuestExtra('access')"><span>🔑</span><div><strong>Access</strong><small>Keys & entry</small></div><b>→</b></button><button onclick="openGuestExtra('directions')"><span>↗</span><div><strong>Getting here</strong><small>Directions & transfers</small></div><b>→</b></button><button onclick="openGuestExtra('host')"><span>♡</span><div><strong>Contact host</strong><small>We're here to help</small></div><b>→</b></button></div></section>
 <section class="during-stay section" id="during-details"><div class="section-heading"><p class="eyebrow olive">DURING YOUR STAY</p><h2>Everything<br><em>at hand.</em></h2></div><div class="during-grid"><button onclick="openGuestExtra('aircon')">Air conditioning <b>→</b></button><button onclick="openGuestExtra('hotwater')">Hot water <b>→</b></button><button onclick="openGuestExtra('towels')">Towels & linen <b>→</b></button><button onclick="openGuestExtra('kitchen')">Kitchen & appliances <b>→</b></button><button onclick="openGuestExtra('washing')">Washing machine <b>→</b></button><button onclick="openGuestExtra('cleaning')">Cleaning <b>→</b></button></div></section>
 <section class="local-favourites section"><div class="section-heading"><p class="eyebrow olive">OUR LOCAL FAVOURITES</p><h2>Go beyond<br><em>the doorstep.</em></h2></div><div class="local-grid"><button onclick="openGuestExtra('restaurants')"><span>01</span><strong>Restaurants</strong><small>Where we'd go for dinner</small><b>→</b></button><button onclick="openGuestExtra('coffee')"><span>02</span><strong>Coffee & breakfast</strong><small>Slow mornings nearby</small><b>→</b></button><button onclick="openGuestExtra('beaches2')"><span>03</span><strong>Beaches</strong><small>Swim, relax, repeat</small><b>→</b></button><button onclick="openGuestExtra('bars')"><span>04</span><strong>Bars & evenings</strong><small>For after sunset</small><b>→</b></button></div></section>
