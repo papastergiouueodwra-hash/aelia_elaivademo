@@ -1284,3 +1284,15 @@ body.discover-photo-open{overflow:hidden}
     padding-bottom:100px;
   }
 }
+
+/* Smaller hero photograph on desktop; the mobile full-photo layout stays unchanged. */
+@media (min-width: 761px) {
+  .hero {
+    min-height: 72vh;
+    position: relative;
+    color: #f7f1e5;
+    background:
+      linear-gradient(180deg, rgba(37,43,31,.2), rgba(37,43,31,.72)),
+      url('assets/aelia-hero-desktop.jpg?v=20261008-5') center 20% / cover no-repeat;
+  }
+}
