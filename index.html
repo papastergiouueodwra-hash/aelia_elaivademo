@@ -34,10 +34,21 @@
 @media(max-width:760px){.property-modal .property-image{height:240px}.property-modal .property-copy{padding:22px}}
 </style><style>
 .language-modal{position:fixed;inset:0;background:rgba(69,21,31,.82);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100}.language-box{width:min(560px,100%);background:#596449;color:#5a1f2b;text-align:center;padding:48px 35px;box-shadow:0 25px 70px rgba(0,0,0,.3)}.language-box .eyebrow{color:#5a1f2b;font-weight:800}.language-box h2{font:700 48px/1 "Cormorant Garamond";margin:8px 0 12px}.language-box>p:not(.eyebrow){font-size:14px;font-weight:600;color:#eadbd8}.language-options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}.language-options button{border:2px solid #5a1f2b;background:transparent;color:#5a1f2b;padding:20px 12px;font:700 17px "DM Sans";transition:.2s}.language-options button:hover{background:#5a1f2b;color:#f7eee8}.language-modal.hidden{display:none}@media(max-width:760px){.language-box{padding:38px 22px}.language-box h2{font-size:40px}.language-options{grid-template-columns:1fr}}
+</style><style id="aelia-full-photo-on-mobile">
+.aelia-full-mobile-photo{display:none}
+@media(max-width:760px){
+  .hero{min-height:0!important;background:#241d1c!important;padding-bottom:66px}
+  .hero::before{display:none!important;content:none!important}
+  .aelia-full-mobile-photo{display:block;width:100%;height:auto!important;max-width:100%;object-fit:contain!important;aspect-ratio:1536 / 668;position:relative;z-index:1}
+  .hero-copy{padding:24px 7% 0!important;max-width:none}
+  .hero-overlay{pointer-events:none}
+  .hero .scroll{bottom:21px}
+}
 </style></head>
 <body><div class="language-modal" id="languageModal"><div class="language-box"><p class="eyebrow">WELCOME / ΚΑΛΩΣ ΗΡΘΑΤΕ</p><h2>Choose your language</h2><p>Select your preferred language to continue.</p><div class="language-options"><button onclick="setLanguage('en')">English</button><button onclick="setLanguage('el')">Ελληνικά</button><button onclick="setLanguage('de')">Deutsch</button></div></div></div>
 <header class="hero">
   <div class="hero-overlay"></div>
+  <img class="aelia-full-mobile-photo" src="assets/aelia-hero-desktop.jpg?v=20261008-5" width="1536" height="668" alt="Aelia Suites interior" decoding="async">
   <nav><span class="brand">AELIA <small>SUITES</small></span><button type="button" class="lang" id="currentLang" onclick="showLanguagePicker();return false;">EN</button></nav>
   <div class="hero-copy">
     <p class="eyebrow">YOUR DIGITAL GUEST GUIDE</p>
