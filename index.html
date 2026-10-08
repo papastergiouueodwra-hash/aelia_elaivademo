@@ -209,15 +209,20 @@ function openProperty(i){
   const galleryWrap=document.getElementById('propertyGalleryWrap');
   const gallery=document.getElementById('propertyGallery');
   if(p.gallery&&p.gallery.length){
-    galleryWrap.style.display='block';
+    galleryWrap.classList.remove('is-open');
+    galleryWrap.style.display='';
+    const viewAll=document.getElementById('propertyViewAll');
+    viewAll.style.display='flex';
+    viewAll.textContent=copy.viewAll;
     document.getElementById('propertyGalleryTitle').textContent=copy.galleryTitle;
-    document.getElementById('propertyViewAll').textContent=copy.viewAll;
     gallery.innerHTML=p.gallery.map(([room,src])=>{
       const label=copy.rooms[room]||room;
       return '<figure><button type="button" class="room-photo-button" data-src="'+src+'" data-label="'+label+'" onclick="openRoomPhoto(this.dataset.src,this.dataset.label)"><img class="room-grid-photo" src="'+src+'" alt="'+label+'" loading="lazy"></button><figcaption>'+label+'</figcaption></figure>';
     }).join('');
   }else{
+    galleryWrap.classList.remove('is-open');
     galleryWrap.style.display='none';
+    document.getElementById('propertyViewAll').style.display='none';
     gallery.innerHTML='';
   }
   document.getElementById('propertyTourTitle').textContent=copy.tour;
@@ -232,8 +237,13 @@ function scrollToPropertyPhotos(){
   const wrap=document.getElementById('propertyGalleryWrap');
   const box=document.querySelector('#modal .property-modal');
   if(!wrap||!box) return;
-  const target=wrap.getBoundingClientRect().top-box.getBoundingClientRect().top+box.scrollTop-18;
-  box.scrollTo({top:Math.max(0,target),behavior:'smooth'});
+  wrap.classList.add('is-open');
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      const target=wrap.offsetTop-18;
+      box.scrollTo({top:Math.max(0,target),behavior:'smooth'});
+    });
+  });
 }
 function openRoomPhoto(src,label){
   if(!selectedProperty?.gallery) return;
