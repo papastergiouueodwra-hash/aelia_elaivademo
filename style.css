@@ -1293,7 +1293,7 @@ body.discover-photo-open{overflow:hidden}
     color: #f7f1e5;
     background:
       linear-gradient(180deg, rgba(37,43,31,.2), rgba(37,43,31,.72)),
-      url('assets/aelia-hero-desktop.jpg?v=20261008-5') center 20% / cover no-repeat;
+      url('assets/aelia-hero-desktop.jpg?v=20261008-5') center 14% / cover no-repeat;
   }
 }
 
