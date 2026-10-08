@@ -1253,3 +1253,11 @@ body.discover-photo-open{overflow:hidden}
 
 /* Modal property-only content must stay hidden outside house views */
 #modal [hidden]{display:none!important}
+
+/* Shared modal mode separation */
+#modal:not(.property-mode) .property-only{
+  display:none!important;
+}
+#modal.property-mode .property-only[hidden]{
+  display:none!important;
+}
