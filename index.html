@@ -230,7 +230,10 @@ function openProperty(i){
 let currentRoomPhotoIndex=0;
 function scrollToPropertyPhotos(){
   const wrap=document.getElementById('propertyGalleryWrap');
-  if(wrap) wrap.scrollIntoView({behavior:'smooth',block:'start'});
+  const box=document.querySelector('#modal .property-modal');
+  if(!wrap||!box) return;
+  const target=wrap.getBoundingClientRect().top-box.getBoundingClientRect().top+box.scrollTop-18;
+  box.scrollTo({top:Math.max(0,target),behavior:'smooth'});
 }
 function openRoomPhoto(src,label){
   if(!selectedProperty?.gallery) return;
@@ -268,6 +271,13 @@ function closeRoomPhoto(e){
   if(box) box.classList.remove('show');
   document.body.classList.remove('room-photo-open');
 }
+document.addEventListener('keydown',e=>{
+  const viewer=document.getElementById('roomLightbox');
+  if(!viewer?.classList.contains('show')) return;
+  if(e.key==='Escape') closeRoomPhoto();
+  if(e.key==='ArrowLeft') stepRoomPhoto(-1);
+  if(e.key==='ArrowRight') stepRoomPhoto(1);
+});
 function openBookingFor(i){selectedProperty=properties[i];openBooking();}
 function openBooking(){
   if(!selectedProperty)return;
