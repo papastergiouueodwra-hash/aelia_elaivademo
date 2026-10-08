@@ -48,7 +48,7 @@ function openProperty(i){
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.house-card').forEach((card,i)=>{
     card.addEventListener('click',e=>{
-      e.preventDefault();
+      if(e.target.closest('.house-actions button')) return;
       openProperty(i);
     });
   });
